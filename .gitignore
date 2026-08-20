@@ -1,0 +1,5 @@
+# vs config & cache
+CMakePresets.json
+.vs/
+out/
+GetGameWindow/
