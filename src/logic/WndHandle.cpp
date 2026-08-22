@@ -1,10 +1,11 @@
-#include "WinController.hpp"
+#pragma once
+#include "include/wnd_helper/wnd_helper.hpp"
 #include <iostream>
 #include <windows.h>
 
-WinController::WinController() : window_hwnd(nullptr) {}
+WndHandle::WndHandle() : window_hwnd(nullptr) {}
 
-bool WinController::bindForegroundWindow() {
+bool WndHandle::bindForegroundWindow() {
     // 透過處於最前端，找尋視窗與標題
     window_hwnd = ::GetForegroundWindow();
 
@@ -16,7 +17,7 @@ bool WinController::bindForegroundWindow() {
 }
 
 
-bool WinController::findTargetWindow(const std::wstring& windowTitle) {
+bool WndHandle::findTargetWindow(const std::wstring& windowTitle) {
     // 透過視窗標題尋找視窗
     window_hwnd = FindWindowW(nullptr, windowTitle.c_str());
 

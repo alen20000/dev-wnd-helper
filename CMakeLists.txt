@@ -14,12 +14,14 @@ if(MSVC)
 endif()
 
 set (WINDOW_SOURCES
-
-    "src/logic/wnd_helper.cpp"
+    "src/logic/WndHandle.cpp"
 )
-
+set(CONTROLLER
+    "src/controller/AppController.cpp"
+)
 add_executable(wnd-helper 
     main.cpp
     ${WINDOW_SOURCES}
+    ${CONTROLLER}
 )
-target_include_directories(wnd-helper PRIVATE "include/wnd_helper")
+target_include_directories(wnd-helper PRIVATE ".")
