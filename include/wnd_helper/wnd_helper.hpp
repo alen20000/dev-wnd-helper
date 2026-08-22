@@ -1,6 +1,4 @@
-#ifndef WIN_CONTROLLER_HPP
-#define WIN_CONTROLLER_HPP
-
+#pragma once
 #include <string>
 #include <windows.h> 
 
@@ -18,6 +16,6 @@ public:
     bool findTargetWindow(const std::wstring& windowTitle);
 
     HWND getWindowHandle() const { return window_hwnd; }
+
 };
 
-#endif

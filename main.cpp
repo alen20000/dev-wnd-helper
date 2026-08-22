@@ -1,5 +1,6 @@
-#include "WinController.hpp"
+#include "include/wnd_helper/wnd_helper.hpp"
 #include <iostream>
+#include <cstdint>
 
 int main() {
 	//UTF-8 編碼
