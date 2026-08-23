@@ -2,8 +2,7 @@
 
 #include <string>
 #include <windows.h> 
-#include <unordered_map>
-#include <functional>
+
 
 class WndHandle {
 private:
@@ -22,18 +21,3 @@ public:
 
 };
 
-class AppController {
-private:
-
-    std::unordered_map<int, std::function<void()>> menuMap;
-    //視窗迴圈
-    void loop();
-    //預設:任務A
-    void handleBindForegroundWindow();
-
-public:
-    AppController();
-
-    void run();
-
-};

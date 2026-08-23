@@ -1,9 +1,10 @@
-
-#include "include/wnd_helper/wnd_helper.hpp"
+#include "controller/Appcontroller.hpp"
+#include "logic/WndHandle.hpp"
 #include <iostream>	
 #include <cstdint>
 #include <unordered_map>
 #include <windows.h>
+
 AppController::AppController() {
 
 	// UTF-8 eecoding

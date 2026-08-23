@@ -1,5 +1,5 @@
 #pragma once
-#include "include/wnd_helper/wnd_helper.hpp"
+#include "logic/WndHandle.hpp"
 #include <iostream>
 #include <windows.h>
 
