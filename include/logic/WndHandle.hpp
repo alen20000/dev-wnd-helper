@@ -1,8 +1,7 @@
 #pragma once
-
 #include <string>
 #include <windows.h> 
-
+#include <utility>
 
 class WndHandle {
 private:
@@ -12,7 +11,7 @@ public:
     WndHandle();
 
     // 直接抓取當前最上層視窗
-    static HWND bindForegroundWindow();
+    static std::pair<HWND, std::wstring> bindForegroundWindow();
 
     // 尋找目標視窗
     bool findTargetWindow(const std::wstring& windowTitle);

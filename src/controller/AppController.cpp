@@ -9,6 +9,8 @@ AppController::AppController() {
 
 	// UTF-8 eecoding
 	system("chcp 65001 > nul");
+	// 要印中文，就要用寬字元；要印寬字元，就要改 local，所以要加下面這行，不然就全空白給你，也不報錯
+	std::locale::global(std::locale("zh_TW.UTF-8"));
 	menuMap[1] = [this]() {this->handleBindForegroundWindow();};
 
 }
@@ -22,9 +24,18 @@ void AppController::handleBindForegroundWindow() {
 
 	bool m_isListing = true;
 	while (m_isListing) {
-		HWND hwnd = WndHandle::bindForegroundWindow();
+		auto [hwnd, title] = WndHandle::bindForegroundWindow();
 		if (hwnd != lastHwnd) {
-			std::cout << "窗柄為:" << reinterpret_cast<uintptr_t>(hwnd) << std::endl;
+
+			// 如果標題裡面包含路徑的斜線 '\'，我們就隻取最後面那一段乾淨的名字
+			size_t pos = title.find_last_of(L"\\");
+			if (pos != std::wstring::npos) {
+				title = title.substr(pos + 1); // 把路徑切掉，只留檔名或最後的名稱
+			}
+
+			std::wcout << L"窗柄為:" << reinterpret_cast<uintptr_t>(hwnd) 
+						<< L"窗口名稱:"<< title<< std::endl;
+
 			lastHwnd = hwnd;
 		}
 		Sleep(200);
