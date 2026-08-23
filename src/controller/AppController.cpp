@@ -15,13 +15,21 @@ AppController::AppController() {
 
 void AppController::run() {
 	loop();
-};
+}
 
 void AppController::handleBindForegroundWindow() {
-	HWND hwnd = WndHandle::bindForegroundWindow();
+	HWND lastHwnd = nullptr;
 
-	std::cout << "窗柄為:"  << reinterpret_cast<uintptr_t>(hwnd) << std::endl;
-};
+	bool m_isListing = true;
+	while (m_isListing) {
+		HWND hwnd = WndHandle::bindForegroundWindow();
+		if (hwnd != lastHwnd) {
+			std::cout << "窗柄為:" << reinterpret_cast<uintptr_t>(hwnd) << std::endl;
+			lastHwnd = hwnd;
+		}
+		Sleep(200);
+	}
+}
 
 void AppController::loop() {
 	int choice = 0;
@@ -45,4 +53,4 @@ void AppController::loop() {
 		Sleep(50);
 	}
 
-};
+}

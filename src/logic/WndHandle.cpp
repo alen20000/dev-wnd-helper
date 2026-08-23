@@ -7,9 +7,7 @@ WndHandle::WndHandle() : window_hwnd(nullptr) {}
 
 HWND WndHandle::bindForegroundWindow() {
     // 透過處於最前端，找尋視窗與標題
-
     return ::GetForegroundWindow();
-
 }
 
 
