@@ -3,12 +3,12 @@
 #include <iostream>	
 #include <cstdint>
 #include <unordered_map>
-
+#include <windows.h>
 AppController::AppController() {
 
 	// UTF-8 eecoding
 	system("chcp 65001 > nul");
-	menuMap[1] = [this]() {this->doTaskA();};
+	menuMap[1] = [this]() {this->handleBindForegroundWindow();};
 
 }
 
@@ -16,9 +16,12 @@ void AppController::run() {
 	loop();
 };
 
-void AppController::doTaskA() {
-	std::cout << "TEST";
+void AppController::handleBindForegroundWindow() {
+	HWND hwnd = WndHandle::bindForegroundWindow();
+
+	std::cout << "窗柄為:"  << reinterpret_cast<uintptr_t>(hwnd) << std::endl;
 };
+
 void AppController::loop() {
 	int choice = 0;
 
@@ -26,18 +29,19 @@ void AppController::loop() {
 		// show menu
 
 		// get inpput
+		std::cout << "請輸入:\n";
 		std::cin >> choice;
 		// evaluating what user want
-
 		if (choice == 4) break;
 
 		if (menuMap.count(choice)) {
-			menuMap[choice];
+			menuMap[choice]();
 		}
 		else {
 			std::cout << "錯誤輸入";
 		}
 
+		Sleep(50);
 	}
 
 };
