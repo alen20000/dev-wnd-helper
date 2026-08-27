@@ -4,6 +4,7 @@
 #include <cstdint>
 #include <unordered_map>
 #include <windows.h>
+#include <vector>
 
 AppController::AppController() {
 
@@ -17,6 +18,47 @@ AppController::AppController() {
 
 void AppController::run() {
 	loop();
+}
+
+void AppController::loop() {
+	int choice = 0;
+
+	while (true) {
+		// show menu
+
+		// get inpput
+		showMenu();
+
+		std::cin >> choice;
+		// evaluating what user want
+		if (choice == 4) break;
+
+		if (menuMap.count(choice)) {
+			menuMap[choice]();
+		}
+		else {
+			std::cout << "錯誤輸入";
+		}
+
+		Sleep(50);
+	}
+
+}
+
+//先用最簡單的，未來改UI，則改在hpp宣告，用push_back動態添加
+void AppController::showMenu() {
+	std::vector<std::wstring>menuTests = {
+		(L"1. 綁定前景視窗"),
+		(L"2. 尋找目標視窗"),
+		(L"4. 離開程式")
+	};
+
+	for (const auto& text : menuTests) {
+		std::wcout << text << std::endl;
+	}
+
+	std::cout << "請輸入:";
+
 }
 
 void AppController::handleBindForegroundWindow() {
@@ -40,28 +82,4 @@ void AppController::handleBindForegroundWindow() {
 		}
 		Sleep(200);
 	}
-}
-
-void AppController::loop() {
-	int choice = 0;
-
-	while (true) {
-		// show menu
-
-		// get inpput
-		std::cout << "請輸入:\n";
-		std::cin >> choice;
-		// evaluating what user want
-		if (choice == 4) break;
-
-		if (menuMap.count(choice)) {
-			menuMap[choice]();
-		}
-		else {
-			std::cout << "錯誤輸入";
-		}
-
-		Sleep(50);
-	}
-
 }

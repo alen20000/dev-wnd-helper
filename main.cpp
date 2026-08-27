@@ -8,7 +8,7 @@ int main() {
 	//實例化物件
 	AppController controller;
 
-	std::cout << "入口測試";
+
 	controller.run();
 
 
