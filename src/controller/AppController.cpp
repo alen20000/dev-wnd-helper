@@ -1,3 +1,6 @@
+#define WIN32_LEAN_AND_MEAN  //預防加載到windos肥大的標頭檔
+#define NOMINMAX //禁止使用微軟的max巨集
+
 #include "controller/Appcontroller.hpp"
 #include "logic/WndHandle.hpp"
 #include <iostream>	
@@ -5,7 +8,7 @@
 #include <unordered_map>
 #include <windows.h>
 #include <vector>
-
+#include <limits> // 需要引入這個來用 std::numeric_limits
 AppController::AppController() {
 
 	// UTF-8 eecoding
@@ -13,7 +16,7 @@ AppController::AppController() {
 	// 要印中文，就要用寬字元；要印寬字元，就要改 local，所以要加下面這行，不然就全空白給你，也不報錯
 	std::locale::global(std::locale("zh_TW.UTF-8"));
 	menuMap[1] = [this]() {this->handleBindForegroundWindow();};
-
+	menuMap[2] = [this]() {this->handleFindTargetWindow();};
 }
 
 void AppController::run() {
@@ -24,12 +27,23 @@ void AppController::loop() {
 	int choice = 0;
 
 	while (true) {
-		// show menu
 
 		// get inpput
 		showMenu();
 
-		std::cin >> choice;
+		if (!(std::cin >> choice)) {
+			std::cout << "輸入格式錯誤，請輸入數字！\n";
+
+			// 解除輸入錯誤鎖死
+			std::cin.clear(); 
+			// 清除緩衝區垃圾，直到 \n(ENTER)
+			std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
+
+			continue; // 重新顯示選單
+		}
+
+
+
 		// evaluating what user want
 		if (choice == 4) break;
 
@@ -38,6 +52,7 @@ void AppController::loop() {
 		}
 		else {
 			std::cout << "錯誤輸入";
+
 		}
 
 		Sleep(50);
@@ -83,3 +98,22 @@ void AppController::handleBindForegroundWindow() {
 		Sleep(200);
 	}
 }
+
+void AppController::handleFindTargetWindow() {
+
+	WndHandle myWindow;
+	std::wstring windowTitle;
+
+	std::cout << "輸入要找尋視窗標題:";
+
+	std::cin.clear();
+	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+	std::getline(std::wcin, windowTitle);
+
+	if (myWindow.findTargetWindow(windowTitle)) {
+		std::cout << "有視窗";
+	}
+	else {
+		std::cout << "沒有視窗";
+	}
+}	

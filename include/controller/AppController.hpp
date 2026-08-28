@@ -13,6 +13,8 @@ private:
     //獲取前景視窗句柄
     void handleBindForegroundWindow();
 
+    void handleFindTargetWindow();
+
     //進入迴圈
     void loop();
 
