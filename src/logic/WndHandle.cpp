@@ -1,9 +1,12 @@
 #pragma once
+#define WIN32_LEAN_AND_MEAN  // 排除微軟少用、又肥的標頭檔
+#define NOMINMAX //關掉微軟的全域 min/max 巨集
 #include "logic/WndHandle.hpp"
 #include <iostream>
 #include <windows.h>
 #include <string>
 #include <utility>
+
 WndHandle::WndHandle() : window_hwnd(nullptr) {}
 
 std::pair<HWND, std::wstring> WndHandle::bindForegroundWindow(){
