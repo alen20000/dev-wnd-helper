@@ -27,6 +27,9 @@ set (window_sources
 set(controller_sources
     "src/controller/AppController.cpp"
 )
+set(ui_sources
+"src/ui/"
+)
 # =======================
 add_executable(wnd-helper 
     main.cpp

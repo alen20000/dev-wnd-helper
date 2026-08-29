@@ -2,7 +2,7 @@
 #include <iostream>
 #include <cstdint>
 
-int main() {
+int main(int argc, char* argv[]) {
 	//UTF-8 編碼
 	system("chcp 65001 > nul");
 	//實例化物件
