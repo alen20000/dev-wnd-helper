@@ -1,4 +1,4 @@
-#include "ui\MainWindow.hpp
+#include "ui\MainWindow.hpp"
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget* parent)
