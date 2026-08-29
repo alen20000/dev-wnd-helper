@@ -3,3 +3,6 @@ CMakePresets.json
 .vs/
 out/
 GetGameWindow/
+
+# private setting
+CMakeUserPresets.json
