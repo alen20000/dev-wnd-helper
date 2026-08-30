@@ -17,12 +17,15 @@ MainWindow::MainWindow(QWidget* parent)
 	f_button = new QPushButton("first_button", this);
 	s_button = new QPushButton("secound_button", this);
 	thi_button = new QPushButton("third_button", this);
+	m_exit_button = new QPushButton("Exit, this",this);
 
 	//排版
 	QVBoxLayout* layout = new QVBoxLayout(this);
 	layout->addWidget(f_button);
 	layout->addWidget(s_button);
 	layout->addWidget(thi_button);
+	layout->addWidget(m_exit_button);
+	layout->addWidget(outputLabel);
 
 	//接線
 	connect(f_button, &QPushButton::clicked, this, &MainWindow::onFirst);

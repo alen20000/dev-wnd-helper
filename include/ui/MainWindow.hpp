@@ -20,5 +20,6 @@ private :
     QPushButton* f_button;
     QPushButton* s_button;
     QPushButton* thi_button;
+    QPushButton* m_exit_button;
     QLabel* outputLabel;
 };
