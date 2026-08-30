@@ -15,48 +15,6 @@ AppController::AppController() {
 	system("chcp 65001 > nul");
 	// 要印中文，就要用寬字元；要印寬字元，就要改 local，所以要加下面這行，不然就全空白給你，也不報錯
 	std::locale::global(std::locale("zh_TW.UTF-8"));
-	menuMap[1] = [this]() {this->handleBindForegroundWindow();};
-	menuMap[2] = [this]() {this->handleFindTargetWindow();};
-}
-
-void AppController::run() {
-	loop();
-}
-
-void AppController::loop() {
-	int choice = 0;
-
-	while (true) {
-
-		// get inpput
-		showMenu();
-
-		if (!(std::cin >> choice)) {
-			std::cout << "輸入格式錯誤，請輸入數字！\n";
-
-			// 解除輸入錯誤鎖死
-			std::cin.clear(); 
-			// 清除緩衝區垃圾，直到 \n(ENTER)
-			std::cin.ignore((std::numeric_limits<std::streamsize>::max)(), '\n');
-
-			continue; // 重新顯示選單
-		}
-
-
-
-		// evaluating what user want
-		if (choice == 4) break;
-
-		if (menuMap.count(choice)) {
-			menuMap[choice]();
-		}
-		else {
-			std::cout << "錯誤輸入";
-
-		}
-
-		Sleep(50);
-	}
 
 }
 
@@ -76,27 +34,29 @@ void AppController::showMenu() {
 
 }
 
-void AppController::handleBindForegroundWindow() {
-	HWND lastHwnd = nullptr;
+std::wstring AppController::handleBindForegroundWindow(const std::wstring& windowTitle) {
 
-	bool m_isListing = true;
-	while (m_isListing) {
-		auto [hwnd, title] = WndHandle::bindForegroundWindow();
-		if (hwnd != lastHwnd) {
+	return L"測試回傳文字";
+	//HWND lastHwnd = nullptr;
 
-			// 如果標題裡面包含路徑的斜線 '\'，我們就隻取最後面那一段乾淨的名字
-			size_t pos = title.find_last_of(L"\\");
-			if (pos != std::wstring::npos) {
-				title = title.substr(pos + 1); // 把路徑切掉，只留檔名或最後的名稱
-			}
+	//bool m_isListing = true;
+	//while (m_isListing) {
+	//	auto [hwnd, title] = WndHandle::bindForegroundWindow();
+	//	if (hwnd != lastHwnd) {
 
-			std::wcout << L"窗柄為:" << reinterpret_cast<uintptr_t>(hwnd) 
-						<< L"窗口名稱:"<< title<< std::endl;
+	//		// 如果標題裡面包含路徑的斜線 '\'，我們就隻取最後面那一段乾淨的名字
+	//		size_t pos = title.find_last_of(L"\\");
+	//		if (pos != std::wstring::npos) {
+	//			title = title.substr(pos + 1); // 把路徑切掉，只留檔名或最後的名稱
+	//		}
 
-			lastHwnd = hwnd;
-		}
-		Sleep(200);
-	}
+	//		std::wcout << L"窗柄為:" << reinterpret_cast<uintptr_t>(hwnd) 
+	//					<< L"窗口名稱:"<< title<< std::endl;
+
+	//		lastHwnd = hwnd;
+	//	}
+	//	Sleep(200);
+	//}
 }
 
 void AppController::handleFindTargetWindow() {

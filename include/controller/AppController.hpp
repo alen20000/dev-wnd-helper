@@ -1,6 +1,6 @@
 #include <unordered_map>
 #include <functional>
-
+#include <string>
 
 class AppController {
 private:
@@ -10,8 +10,6 @@ private:
     // 管理CLI顯示內容
     void showMenu();
 
-    //獲取前景視窗句柄
-    void handleBindForegroundWindow();
 
     void handleFindTargetWindow();
 
@@ -21,6 +19,8 @@ private:
 public:
     AppController();
 
+    //獲取前景視窗句柄
+    std::wstring handleBindForegroundWindow(const std::wstring& windowTitle);
     //啟動控制器
     void run();
 

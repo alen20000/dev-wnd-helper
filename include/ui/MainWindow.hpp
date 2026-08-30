@@ -2,7 +2,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QLabel>
-
+#include <QLineEdit>
 class AppController; // 前置宣告，防止互相依賴
 
 class MainWindow : public QWidget {
@@ -16,7 +16,7 @@ private slots:
     void onSecond();
     void onThird();
 private :
-
+    QLineEdit* targetInputText;
     QPushButton* f_button;
     QPushButton* s_button;
     QPushButton* thi_button;
