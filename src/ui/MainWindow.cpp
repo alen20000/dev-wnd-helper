@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 	targetInputText = new QLineEdit(this);
 
-	f_button = new QPushButton("first_button", this);
+	f_button = new QPushButton("獲取最上層視窗資訊", this);
 	s_button = new QPushButton("secound_button", this);
 	thi_button = new QPushButton("third_button", this);
 	m_exit_button = new QPushButton("Exit, this",this);
@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget* parent)
 	layout->addWidget(outputLabel);
 
 	//接線
-	connect(f_button, &QPushButton::clicked, this, &MainWindow::onFirst);
+	connect(f_button, &QPushButton::clicked, this, &MainWindow::checkForegroundWindow);
 
 }
 // 功能:在UI的顯示欄顯示
@@ -42,16 +42,12 @@ void MainWindow::showMessage(const QString& text) {
 	outputLabel->setText(text);
 }
 //觸發函式(測試用)
-void MainWindow::onFirst() {
+void MainWindow::checkForegroundWindow() {
 	QString userInput = targetInputText->text();
-	if (userInput.isEmpty()) {
-		this->showMessage("請先輸入視窗標題");
-		return;
-	}
+
 
 	std::wstring windowTitle = userInput.toStdWString();
 	AppController controller;
-
 	WindowDetailInfo result = controller.handleBindForegroundWindow(windowTitle);
 
 	this->showMessage(QString::fromStdWString(result.windowTitle));

@@ -39,25 +39,27 @@ WindowDetailInfo AppController::handleBindForegroundWindow(const std::wstring& w
 
 	HWND lastHwnd = nullptr;
 	bool m_isListing = true;
+
+	//自定義結構容器
+	WindowDetailInfo detailInfo{};
+
 	while (m_isListing) {
 		auto [hwnd, title] = WndHandle::bindForegroundWindow();
 
 		if (hwnd != lastHwnd) {
-
+			detailInfo.windowHandle = hwnd;
 			// 文字處理
 			size_t pos = title.find_last_of(L"\\");
 			if (pos != std::wstring::npos) {
 				title = title.substr(pos + 1); 
 			}
-
-			std::wcout << L"窗柄為:" << reinterpret_cast<uintptr_t>(hwnd) 
-						<< L"窗口名稱:"<< title<< std::endl;
-
+			detailInfo.windowTitle = title;
 			lastHwnd = hwnd;
+			break;
 		}
 		Sleep(200);
 	}
-	return L"測試回傳文字";
+	return detailInfo;
 }
 
 void AppController::handleFindTargetWindow() {
