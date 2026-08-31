@@ -3,6 +3,7 @@
 
 #include "controller/Appcontroller.hpp"
 #include "logic/WndHandle.hpp"
+#include "DataTypes.hpp"
 #include <iostream>	
 #include <cstdint>
 #include <unordered_map>
@@ -34,29 +35,29 @@ void AppController::showMenu() {
 
 }
 
-std::wstring AppController::handleBindForegroundWindow(const std::wstring& windowTitle) {
+WindowDetailInfo AppController::handleBindForegroundWindow(const std::wstring& windowTitle) {
 
+	HWND lastHwnd = nullptr;
+	bool m_isListing = true;
+	while (m_isListing) {
+		auto [hwnd, title] = WndHandle::bindForegroundWindow();
+
+		if (hwnd != lastHwnd) {
+
+			// 文字處理
+			size_t pos = title.find_last_of(L"\\");
+			if (pos != std::wstring::npos) {
+				title = title.substr(pos + 1); 
+			}
+
+			std::wcout << L"窗柄為:" << reinterpret_cast<uintptr_t>(hwnd) 
+						<< L"窗口名稱:"<< title<< std::endl;
+
+			lastHwnd = hwnd;
+		}
+		Sleep(200);
+	}
 	return L"測試回傳文字";
-	//HWND lastHwnd = nullptr;
-
-	//bool m_isListing = true;
-	//while (m_isListing) {
-	//	auto [hwnd, title] = WndHandle::bindForegroundWindow();
-	//	if (hwnd != lastHwnd) {
-
-	//		// 如果標題裡面包含路徑的斜線 '\'，我們就隻取最後面那一段乾淨的名字
-	//		size_t pos = title.find_last_of(L"\\");
-	//		if (pos != std::wstring::npos) {
-	//			title = title.substr(pos + 1); // 把路徑切掉，只留檔名或最後的名稱
-	//		}
-
-	//		std::wcout << L"窗柄為:" << reinterpret_cast<uintptr_t>(hwnd) 
-	//					<< L"窗口名稱:"<< title<< std::endl;
-
-	//		lastHwnd = hwnd;
-	//	}
-	//	Sleep(200);
-	//}
 }
 
 void AppController::handleFindTargetWindow() {

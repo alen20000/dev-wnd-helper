@@ -1,9 +1,11 @@
 #include "ui\MainWindow.hpp"
 #include "controller\AppController.hpp"
+#include "DataTypes.hpp"
 #include <QMessageBox>
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLineEdit>
+
 MainWindow::MainWindow(QWidget* parent)
 	: QWidget(parent) //初始化父類或成員變數
 {
@@ -50,9 +52,9 @@ void MainWindow::onFirst() {
 	std::wstring windowTitle = userInput.toStdWString();
 	AppController controller;
 
-	std::wstring resultTitle = controller.handleBindForegroundWindow(windowTitle);
+	WindowDetailInfo result = controller.handleBindForegroundWindow(windowTitle);
 
-	this->showMessage(QString::fromStdWString(resultTitle));
+	this->showMessage(QString::fromStdWString(result.windowTitle));
 }
 
 
