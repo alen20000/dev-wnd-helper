@@ -46,18 +46,17 @@ WindowDetailInfo AppController::handleBindForegroundWindow(const std::wstring& w
 	while (m_isListing) {
 		auto [hwnd, title] = WndHandle::bindForegroundWindow();
 
-		if (hwnd != lastHwnd) {
-			detailInfo.windowHandle = hwnd;
-			// 文字處理
-			size_t pos = title.find_last_of(L"\\");
-			if (pos != std::wstring::npos) {
-				title = title.substr(pos + 1); 
-			}
-			detailInfo.windowTitle = title;
-			lastHwnd = hwnd;
-			break;
+		detailInfo.windowHandle = hwnd;
+		// 文字處理
+		size_t pos = title.find_last_of(L"\\");
+		if (pos != std::wstring::npos) {
+			title = title.substr(pos + 1); 
 		}
-		Sleep(200);
+		detailInfo.windowTitle = title;
+		lastHwnd = hwnd;
+		break;
+
+
 	}
 	return detailInfo;
 }

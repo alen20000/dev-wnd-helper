@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QVBoxLayout>
 #include <QLineEdit>
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget* parent)
 	: QWidget(parent) //初始化父類或成員變數
@@ -33,8 +34,12 @@ MainWindow::MainWindow(QWidget* parent)
 	layout->addWidget(m_exit_button);
 	layout->addWidget(outputLabel);
 
+	// 初始化 QTimer
+	m_timer = new QTimer(this);
+	connect(m_timer, &QTimer::timeout, this, &MainWindow::checkWindowTimeout);
+
 	//接線
-	connect(f_button, &QPushButton::clicked, this, &MainWindow::checkForegroundWindow);
+	connect(f_button, &QPushButton::clicked, this, &MainWindow::toggleCheckForegroundWindow);
 
 }
 // 功能:在UI的顯示欄顯示
@@ -42,15 +47,24 @@ void MainWindow::showMessage(const QString& text) {
 	outputLabel->setText(text);
 }
 //觸發函式(測試用)
-void MainWindow::checkForegroundWindow() {
-	QString userInput = targetInputText->text();
+// 切換開關邏輯
+void MainWindow::toggleCheckForegroundWindow() {
+	if (!m_isMonitoring) {
+		m_isMonitoring = true;
+		f_button->setText("停止監聽視窗");
+		m_timer->start(200); // 每 200ms 觸發一次
+		showMessage(QString::fromUtf8("開始監聽前景視窗..."));
+	}
+	else {
+		m_isMonitoring = false;
+		m_timer->stop();
+		f_button->setText("獲取最上層視窗資訊");
+		showMessage(QString::fromUtf8("已停止監聽。"));
+	}
+}
 
+void MainWindow::checkWindowTimeout() {
 
-	std::wstring windowTitle = userInput.toStdWString();
-	AppController controller;
-	WindowDetailInfo result = controller.handleBindForegroundWindow(windowTitle);
-
-	this->showMessage(QString::fromStdWString(result.windowTitle));
 }
 
 
