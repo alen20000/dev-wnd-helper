@@ -9,29 +9,10 @@
 #include <unordered_map>
 #include <windows.h>
 #include <vector>
-#include <limits> // 需要引入這個來用 std::numeric_limits
+#include <limits> 
 AppController::AppController() {
 
-	// UTF-8 eecoding
-	system("chcp 65001 > nul");
-	// 要印中文，就要用寬字元；要印寬字元，就要改 local，所以要加下面這行，不然就全空白給你，也不報錯
-	std::locale::global(std::locale("zh_TW.UTF-8"));
 
-}
-
-//先用最簡單的，未來改UI，則改在hpp宣告，用push_back動態添加
-void AppController::showMenu() {
-	std::vector<std::wstring>menuTests = {
-		(L"1. 綁定前景視窗"),
-		(L"2. 尋找目標視窗"),
-		(L"4. 離開程式")
-	};
-
-	for (const auto& text : menuTests) {
-		std::wcout << text << std::endl;
-	}
-
-	std::cout << "請輸入:";
 
 }
 
