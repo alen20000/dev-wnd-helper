@@ -28,11 +28,12 @@ private :
     QToolBar* toolBar;
     // Layout
     QHBoxLayout* mainLayout;
-
+    QHBoxLayout* leftLayout;
+    QHBoxLayout* rightLayout;
     //Btn
      
 	QPushButton* m_btnGetForegroundInfo;
-    QPushButton* m_exit_button;
+    QPushButton* tb_exitBtn;
 
 
     AppController m_controller;

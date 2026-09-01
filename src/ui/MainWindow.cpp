@@ -22,39 +22,44 @@ MainWindow::MainWindow(QWidget* parent)
 	QToolBar* toolBar = addToolBar("Top Toolbar");
 	toolBar->setMovable(false);
 
-	m_exit_button = new QPushButton("Exit, this",this);
-	connect(m_exit_button, &QPushButton::clicked, this, &QWidget::close);
+	tb_exitBtn = new QPushButton("離開", toolBar);
+	toolBar->addWidget(tb_exitBtn);
+	connect(tb_exitBtn, &QPushButton::clicked, this, &QWidget::close);
 
 	//	中央視窗與主板
 	QWidget* centralWidget = new QWidget(this);
 	setCentralWidget(centralWidget);
 	QHBoxLayout* mainLayout = new QHBoxLayout(centralWidget);
 
-	//互動元件
-	targetInputText = new QLineEdit(this);
+
+	// 左側垂直版(按鈕)
+	QVBoxLayout* leftLayout = new QVBoxLayout();
+
+
+	m_btnGetForegroundInfo = new QPushButton("獲取最上層視窗資訊", centralWidget);
+	leftLayout->addWidget(m_btnGetForegroundInfo);
+	connect(m_btnGetForegroundInfo, &QPushButton::clicked, this, &MainWindow::toggleCheckForegroundWindow);
+
+	leftLayout->addStretch();
+
+	// 右側垂直版(欄位)
+	QVBoxLayout* rightLayout = new QVBoxLayout();
+
+	targetInputText = new QLineEdit();
+	rightLayout->addWidget(targetInputText);
 	targetInputText->setPlaceholderText("輸入視窗關鍵字...");
-	mainLayout->addWidget(targetInputText);
-
-	m_btnGetForegroundInfo = new QPushButton("獲取最上層視窗資訊", this);
-	mainLayout->addWidget(m_exit_button);
-
-	// 
 
 
-
-	//排版
-	QVBoxLayout* layout = new QVBoxLayout(this);
-	layout->addWidget(targetInputText);
-	layout->addWidget(m_btnGetForegroundInfo);
-
+	//合併版面
+	mainLayout->addLayout(leftLayout);
+	mainLayout->addLayout(rightLayout);
 
 
 	// 初始化 QTimer
 	m_timer = new QTimer(this);
 	connect(m_timer, &QTimer::timeout, this, &MainWindow::checkWindowTimeout);
 
-	//接線
-	connect(m_btnGetForegroundInfo, &QPushButton::clicked, this, &MainWindow::toggleCheckForegroundWindow);
+
 }
 
 void MainWindow::toggleCheckForegroundWindow() {
