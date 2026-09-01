@@ -1,13 +1,14 @@
 #pragma once
 
 #include <QWidget>
+#include <QVBoxLayout>
 #include <QPushButton>
 #include <QLabel>
 #include <QLineEdit>
 #include "controller\AppController.hpp"
-
-
-class MainWindow : public QWidget {
+#include <QMainWindow>
+#include <QToolBar>
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
@@ -19,13 +20,20 @@ private slots:
     void checkWindowTimeout();
 
 private :
-
+    bool m_isMonitoring = false;
     QLineEdit* targetInputText;
+    QTimer* m_timer;
+
+    //ToolBar
+    QToolBar* toolBar;
+    // Layout
+    QHBoxLayout* mainLayout;
+
+    //Btn
+     
 	QPushButton* m_btnGetForegroundInfo;
     QPushButton* m_exit_button;
 
-    QTimer* m_timer;
-    bool m_isMonitoring = false;
 
     AppController m_controller;
 };

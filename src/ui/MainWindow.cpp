@@ -1,26 +1,44 @@
 #include "ui\MainWindow.hpp"
 #include "controller\AppController.hpp"
 #include "DataTypes.hpp"
+#include <QWidget>
+#include <QMainWindow>
+#include <QToolBar>
+#include <QVBoxLayout>
 #include <QMessageBox>
 #include <QPushButton>
-#include <QVBoxLayout>
 #include <QLineEdit>
 #include <QTimer>
 #include <iostream>
 
 MainWindow::MainWindow(QWidget* parent)
-	: QWidget(parent) //初始化父類或成員變數
+	: QMainWindow(parent) //初始化父類或成員變數
 {
 	//視窗大小預設
 	setWindowTitle("Tool Box");
 	resize(400, 300);
+	
+	//	頂部工具列
+	QToolBar* toolBar = addToolBar("Top Toolbar");
+	toolBar->setMovable(false);
 
-	//建立物件
+	m_exit_button = new QPushButton("Exit, this",this);
+	connect(m_exit_button, &QPushButton::clicked, this, &QWidget::close);
 
+	//	中央視窗與主板
+	QWidget* centralWidget = new QWidget(this);
+	setCentralWidget(centralWidget);
+	QHBoxLayout* mainLayout = new QHBoxLayout(centralWidget);
+
+	//互動元件
 	targetInputText = new QLineEdit(this);
+	targetInputText->setPlaceholderText("輸入視窗關鍵字...");
+	mainLayout->addWidget(targetInputText);
 
 	m_btnGetForegroundInfo = new QPushButton("獲取最上層視窗資訊", this);
-	m_exit_button = new QPushButton("Exit, this",this);
+	mainLayout->addWidget(m_exit_button);
+
+	// 
 
 
 
@@ -28,7 +46,7 @@ MainWindow::MainWindow(QWidget* parent)
 	QVBoxLayout* layout = new QVBoxLayout(this);
 	layout->addWidget(targetInputText);
 	layout->addWidget(m_btnGetForegroundInfo);
-	layout->addWidget(m_exit_button);
+
 
 
 	// 初始化 QTimer
@@ -37,7 +55,6 @@ MainWindow::MainWindow(QWidget* parent)
 
 	//接線
 	connect(m_btnGetForegroundInfo, &QPushButton::clicked, this, &MainWindow::toggleCheckForegroundWindow);
-	connect(m_exit_button, &QPushButton::clicked, this, &QWidget::close);
 }
 
 void MainWindow::toggleCheckForegroundWindow() {
