@@ -5,6 +5,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QLineEdit>
+#include <QPlainTextEdit>
 #include "controller\AppController.hpp"
 #include <QMainWindow>
 #include <QToolBar>
@@ -21,7 +22,7 @@ private slots:
 
 private :
     bool m_isMonitoring = false;
-    QLineEdit* targetInputText;
+
     QTimer* m_timer;
 
     //ToolBar
@@ -35,6 +36,9 @@ private :
 	QPushButton* m_btnGetForegroundInfo;
     QPushButton* tb_exitBtn;
 
+    // Text Box
+    QLineEdit* targetInputText;
+    QPlainTextEdit* outputText;
 
     AppController m_controller;
 };

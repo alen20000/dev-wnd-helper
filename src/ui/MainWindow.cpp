@@ -36,11 +36,11 @@ MainWindow::MainWindow(QWidget* parent)
 	QVBoxLayout* leftLayout = new QVBoxLayout();
 
 
-	m_btnGetForegroundInfo = new QPushButton("獲取最上層視窗資訊", centralWidget);
+	m_btnGetForegroundInfo = new QPushButton("頂層視窗檢測", centralWidget);
 	leftLayout->addWidget(m_btnGetForegroundInfo);
 	connect(m_btnGetForegroundInfo, &QPushButton::clicked, this, &MainWindow::toggleCheckForegroundWindow);
 
-	leftLayout->addStretch();
+	leftLayout->addStretch(); //
 
 	// 右側垂直版(欄位)
 	QVBoxLayout* rightLayout = new QVBoxLayout();
@@ -49,7 +49,9 @@ MainWindow::MainWindow(QWidget* parent)
 	rightLayout->addWidget(targetInputText);
 	targetInputText->setPlaceholderText("輸入視窗關鍵字...");
 
-
+	outputText = new QPlainTextEdit();
+	rightLayout->addWidget(outputText);
+	outputText->setReadOnly(true); // 設定為唯讀，禁止互動
 	//合併版面
 	mainLayout->addLayout(leftLayout);
 	mainLayout->addLayout(rightLayout);
