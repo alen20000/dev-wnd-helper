@@ -88,5 +88,14 @@ void MainWindow::toggleCheckForegroundWindow() {
 void MainWindow::doCheckForegroundWindow() {
 
 	WindowDetailInfo result = m_controller.handleBindForegroundWindow();
-	outputText->appendPlainText(QString::fromStdWString(result.windowTitle));
+	if (result.windowTitle.empty()) {
+		return;
+	}
+	//unpack and trnsform to Qstring
+	QString hwndStr = QString::number(reinterpret_cast<quintptr>(result.windowHandle), 10);
+	QString displayText = QString("標題: %1 | 窗柄 (HWND): %2")
+		.arg(QString::fromStdWString(result.windowTitle))
+		.arg(hwndStr);
+
+	outputText->appendPlainText(displayText);
 }

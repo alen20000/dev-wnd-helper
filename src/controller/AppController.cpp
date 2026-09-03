@@ -18,28 +18,32 @@ AppController::AppController() {
 
 WindowDetailInfo AppController::handleBindForegroundWindow() {
 
-	HWND lastHwnd = nullptr;
-	bool m_isListing = true;
+
 
 	//自定義結構容器
 	WindowDetailInfo detailInfo{};
 
-	while (m_isListing) {
-		auto [hwnd, title] = WndHandle::bindForegroundWindow();
 
-		detailInfo.windowHandle = hwnd;
-		// 文字處理
-		size_t pos = title.find_last_of(L"\\");
-		if (pos != std::wstring::npos) {
-			title = title.substr(pos + 1); 
-		}
-		detailInfo.windowTitle = title;
-		lastHwnd = hwnd;
-		break;
+	auto [hwnd, title] = WndHandle::bindForegroundWindow();
 
+	detailInfo.windowHandle = hwnd;
+
+
+	if (hwnd == m_lastHwnd) {
+		detailInfo.windowHandle = nullptr;
+		detailInfo.windowTitle = L"";
+		return detailInfo;
 
 	}
+	m_lastHwnd = hwnd;
+	// 文字處理
+	size_t pos = title.find_last_of(L"\\");
+	if (pos != std::wstring::npos) {
+		title = title.substr(pos + 1); 
+	}
+	detailInfo.windowTitle = title;
 	return detailInfo;
+
 }
 
 void AppController::handleFindTargetWindow() {

@@ -6,7 +6,7 @@
 #include "DataTypes.hpp"
 class AppController {
 private:
-
+    HWND m_lastHwnd = nullptr;
 
 
 
