@@ -21,7 +21,7 @@ private slots:
     void checkWindowTimeout();
 
 private :
-    bool m_isMonitoring = false;
+
 
     QTimer* m_timer;
 
@@ -40,5 +40,7 @@ private :
     QLineEdit* targetInputText;
     QPlainTextEdit* outputText;
 
+	// Controller
+    bool m_isMonitoring = false;
     AppController m_controller;
 };

@@ -45,11 +45,12 @@ MainWindow::MainWindow(QWidget* parent)
 	// 右側垂直版(欄位)
 	QVBoxLayout* rightLayout = new QVBoxLayout();
 
-	targetInputText = new QLineEdit();
+	targetInputText = new QLineEdit(); //輸入欄位
 	rightLayout->addWidget(targetInputText);
 	targetInputText->setPlaceholderText("輸入視窗關鍵字...");
+	
 
-	outputText = new QPlainTextEdit();
+	outputText = new QPlainTextEdit(); //輸出欄位
 	rightLayout->addWidget(outputText);
 	outputText->setReadOnly(true); // 設定為唯讀，禁止互動
 	//合併版面
@@ -57,16 +58,29 @@ MainWindow::MainWindow(QWidget* parent)
 	mainLayout->addLayout(rightLayout);
 
 
-	// 初始化 QTimer
+	//  QTimer 代替原本CLI的輪詢
 	m_timer = new QTimer(this);
 	connect(m_timer, &QTimer::timeout, this, &MainWindow::checkWindowTimeout);
 
 
 }
-
+// 檢查前景視窗的按鈕開關:用計時器去觸發API函式
 void MainWindow::toggleCheckForegroundWindow() {
+	m_isMonitoring = !m_isMonitoring;  //True/False 交替
 
-	std::cout << "testing";
+	if (m_isMonitoring) {
+		//開啟檢測
+		m_btnGetForegroundInfo->setText("停止檢測"); //更改按鈕文字
+		m_timer->start(100); 
+		outputText->appendPlainText("--- 開始檢測頂層視窗 ---");
+
+	}
+	else {
+		m_btnGetForegroundInfo->setText("頂層視窗檢測");
+		m_timer->stop();
+		outputText->appendPlainText("--- 停止檢測頂層視窗 ---");
+	}
+
 }
 
 void MainWindow::checkWindowTimeout() {
