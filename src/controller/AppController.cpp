@@ -16,7 +16,7 @@ AppController::AppController() {
 
 }
 
-WindowDetailInfo AppController::handleBindForegroundWindow(const std::wstring& windowTitle) {
+WindowDetailInfo AppController::handleBindForegroundWindow() {
 
 	HWND lastHwnd = nullptr;
 	bool m_isListing = true;

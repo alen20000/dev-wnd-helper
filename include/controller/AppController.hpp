@@ -14,7 +14,7 @@ public:
     AppController();
 
     //獲取前景視窗句柄
-    WindowDetailInfo handleBindForegroundWindow(const std::wstring& windowTitle);
+    WindowDetailInfo handleBindForegroundWindow(); 
     void handleFindTargetWindow();
 
 };

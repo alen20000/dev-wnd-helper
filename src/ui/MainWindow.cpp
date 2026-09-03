@@ -53,14 +53,16 @@ MainWindow::MainWindow(QWidget* parent)
 	outputText = new QPlainTextEdit(); //輸出欄位
 	rightLayout->addWidget(outputText);
 	outputText->setReadOnly(true); // 設定為唯讀，禁止互動
+	//  QTimer 代替原本CLI的輪詢
+	m_timer = new QTimer(this);
+	connect(m_timer, &QTimer::timeout, this, &MainWindow::doCheckForegroundWindow);
+
+
 	//合併版面
 	mainLayout->addLayout(leftLayout);
 	mainLayout->addLayout(rightLayout);
 
 
-	//  QTimer 代替原本CLI的輪詢
-	m_timer = new QTimer(this);
-	connect(m_timer, &QTimer::timeout, this, &MainWindow::checkWindowTimeout);
 
 
 }
@@ -83,7 +85,8 @@ void MainWindow::toggleCheckForegroundWindow() {
 
 }
 
-void MainWindow::checkWindowTimeout() {
+void MainWindow::doCheckForegroundWindow() {
 
-	std::cout << "timeout";
+	WindowDetailInfo result = m_controller.handleBindForegroundWindow();
+	outputText->appendPlainText(QString::fromStdWString(result.windowTitle));
 }

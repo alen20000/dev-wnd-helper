@@ -18,7 +18,7 @@ public:
 
 private slots:
     void toggleCheckForegroundWindow();
-    void checkWindowTimeout();
+    void doCheckForegroundWindow();
 
 private :
 
