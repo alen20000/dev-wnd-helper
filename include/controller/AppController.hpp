@@ -1,9 +1,9 @@
 #pragma once
 
+#include "DataTypes.hpp"
 #include <unordered_map>
 #include <functional>
 #include <string>
-#include "DataTypes.hpp"
 class AppController {
 private:
     HWND m_lastHwnd = nullptr;
