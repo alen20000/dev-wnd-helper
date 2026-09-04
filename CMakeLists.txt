@@ -49,3 +49,6 @@ target_include_directories(wnd-helper PRIVATE
 
 # ===== 連結動態庫 =====
 target_link_libraries(wnd-helper PRIVATE Qt6::Core Qt6::Widgets)
+
+#===== 加載子CMAKE =====
+add_subdirectory(test)
