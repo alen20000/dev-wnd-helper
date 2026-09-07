@@ -17,7 +17,7 @@ AppController::AppController() {
 }
 
 WindowDetailInfo AppController::handleBindForegroundWindow() {
-
+	//獲取前景視窗與句柄
 
 
 	//自定義結構容器
@@ -45,6 +45,14 @@ WindowDetailInfo AppController::handleBindForegroundWindow() {
 	return detailInfo;
 
 }
+
+std::vector<WindowDetailInfo> AppController::getAllWindows() {
+	//得到所有可見視窗語句柄
+	std::vector<WindowDetailInfo> windowList;
+	windowList = WndHandle::listAllTopLevelWindows();
+	return windowList;
+}
+
 
 void AppController::handleFindTargetWindow() {
 

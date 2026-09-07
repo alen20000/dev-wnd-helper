@@ -19,7 +19,7 @@ public:
 private slots:
     void toggleCheckForegroundWindow();
     void doCheckForegroundWindow();
-
+	void getAllWindows();
 private :
 
 

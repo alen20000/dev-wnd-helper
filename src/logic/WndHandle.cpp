@@ -49,6 +49,7 @@ namespace  {
 		return TRUE; // 繼續列舉
     };
 }
+
 std::vector<WindowDetailInfo> WndHandle::listAllTopLevelWindows() {
 	// 顯示目前所有頂層視窗
     EnumContext context;

@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget* parent)
 
 	m_showAllTopWindows = new QPushButton("列出所有頂層視窗", centralWidget);
 	leftLayout->addWidget(m_showAllTopWindows);
-
+	connect(m_showAllTopWindows, &QPushButton::clicked, this, &MainWindow::getAllWindows);
 
 	leftLayout->addStretch(); //
 
@@ -102,4 +102,18 @@ void MainWindow::doCheckForegroundWindow() {
 		.arg(hwndStr);
 
 	outputText->appendPlainText(displayText);
+}
+
+//得到所有可見視窗
+
+void MainWindow::getAllWindows() {
+	std::vector<WindowDetailInfo> results;
+	results = m_controller.getAllWindows();
+	for (const auto& result : results) {
+		QString hwndStr = QString::number(reinterpret_cast<quintptr>(result.windowHandle), 10);
+		QString displayText = QString("標題: %1 | 窗柄: %2")
+			.arg(QString::fromStdWString(result.windowTitle))
+			.arg(hwndStr);
+		outputText->appendPlainText(displayText);
+	}
 }
