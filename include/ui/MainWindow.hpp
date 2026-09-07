@@ -34,6 +34,7 @@ private :
     //Btn
      
 	QPushButton* m_btnGetForegroundInfo;
+    QPushButton* m_showAllTopWindows;
     QPushButton* tb_exitBtn;
 
     // Text Box

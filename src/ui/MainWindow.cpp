@@ -20,7 +20,7 @@ MainWindow::MainWindow(QWidget* parent)
 	
 	//	頂部工具列
 	QToolBar* toolBar = addToolBar("Top Toolbar");
-	toolBar->setMovable(false);
+	toolBar->setMovable(false);  //設定固定列
 
 	tb_exitBtn = new QPushButton("離開", toolBar);
 	toolBar->addWidget(tb_exitBtn);
@@ -39,6 +39,10 @@ MainWindow::MainWindow(QWidget* parent)
 	m_btnGetForegroundInfo = new QPushButton("頂層視窗檢測", centralWidget);
 	leftLayout->addWidget(m_btnGetForegroundInfo);
 	connect(m_btnGetForegroundInfo, &QPushButton::clicked, this, &MainWindow::toggleCheckForegroundWindow);
+
+	m_showAllTopWindows = new QPushButton("列出所有頂層視窗", centralWidget);
+	leftLayout->addWidget(m_showAllTopWindows);
+
 
 	leftLayout->addStretch(); //
 
