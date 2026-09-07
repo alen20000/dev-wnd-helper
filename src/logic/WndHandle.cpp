@@ -37,15 +37,34 @@ namespace  {
     //微軟作業系統的 回傳函式
     BOOL CALLBACK InternalEnumProc(HWND hwnd, LPARAM lParam) {
 
-        // 過濾背景視窗
-		if (IsWindowVisible(hwnd)) {
-			wchar_t buffer[256];
-			int length = GetWindowTextW(hwnd, buffer, 256);
-			if (length > 0) {
-				EnumContext* context = reinterpret_cast<EnumContext*>(lParam);
-				context->windows.push_back({ hwnd, std::wstring(buffer) });
-			}
-		}
+		// 過濾1. 去除不可見視窗
+        if (!IsWindowVisible(hwnd)) {
+            return TRUE;
+        }
+
+		// 過濾2. 去除沒有標題的視窗
+		wchar_t buffer[256];
+        int length = GetWindowTextW(hwnd, buffer, 256);
+        if (length <= 0) {
+            return TRUE;
+        }
+        // 過濾3.  去除浮動工具列
+        LONG exStyle = GetWindowLong(hwnd, GWL_EXSTYLE);
+        if (exStyle & WS_EX_TOOLWINDOW) {
+            return TRUE;
+        }
+
+        // 過濾4. 擁有母視窗的則排除
+        HWND owner = GetWindow(hwnd, GW_OWNER);
+        if (owner != nullptr) {
+            return TRUE; 
+        }
+        std::wstring title(buffer);
+
+
+        // 通過所有篩選，加入清單
+        EnumContext* context = reinterpret_cast<EnumContext*>(lParam);
+        context->windows.push_back({ hwnd, title });
 		return TRUE; // 繼續列舉
     };
 }
