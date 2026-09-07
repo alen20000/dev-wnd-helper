@@ -2,8 +2,8 @@
 # require Cmake version
 cmake_minimum_required(VERSION 3.15)
 
-# ===== 專案名稱 =====
-project(wnd-helper-testing)
+# ===== 名稱 =====
+project(manual_check.cpp)
 # ===== 前置設定 =====
 
 set(CMAKE_CXX_STANDARD 17)
@@ -27,8 +27,8 @@ set(ui_sources
     "${CMAKE_CURRENT_SOURCE_DIR}/../src/ui/MainWindow.cpp"
 )
 # =======================
-add_executable(wnd-helper-testing
-    ${CMAKE_CURRENT_SOURCE_DIR}/test_main.cpp
+add_executable(manual_check.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/manual_check.cpp
 
     ${window_sources}
 
@@ -36,7 +36,7 @@ add_executable(wnd-helper-testing
 )
 
 #   標頭檔搜尋路徑
-target_include_directories(wnd-helper-testing PRIVATE 
+target_include_directories(manual_check.cpp PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/../include
 )
 
