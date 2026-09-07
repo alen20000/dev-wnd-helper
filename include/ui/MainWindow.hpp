@@ -20,6 +20,7 @@ private slots:
     void toggleCheckForegroundWindow();
     void doCheckForegroundWindow();
 	void getAllWindows();
+	void clearOutput();
 private :
 
 
@@ -36,7 +37,7 @@ private :
 	QPushButton* m_btnGetForegroundInfo;
     QPushButton* m_showAllTopWindows;
     QPushButton* tb_exitBtn;
-
+	QPushButton* tb_clearBtn;
     // Text Box
     QLineEdit* targetInputText;
     QPlainTextEdit* outputText;

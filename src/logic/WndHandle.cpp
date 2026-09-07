@@ -29,7 +29,7 @@ std::pair<HWND, std::wstring> WndHandle::bindForegroundWindow(){
 }
 
 
-// 匿名空間
+// 匿名空間 (避免Windows API汙染hpp)
 namespace  {
     struct EnumContext {
         std::vector<WindowDetailInfo> windows;

@@ -16,7 +16,7 @@ MainWindow::MainWindow(QWidget* parent)
 {
 	//視窗大小預設
 	setWindowTitle("Tool Box");
-	resize(400, 300);
+	resize(680, 300);
 	
 	//	頂部工具列
 	QToolBar* toolBar = addToolBar("Top Toolbar");
@@ -25,6 +25,10 @@ MainWindow::MainWindow(QWidget* parent)
 	tb_exitBtn = new QPushButton("離開", toolBar);
 	toolBar->addWidget(tb_exitBtn);
 	connect(tb_exitBtn, &QPushButton::clicked, this, &QWidget::close);
+
+	tb_clearBtn = new QPushButton("清空", toolBar);
+	toolBar->addWidget(tb_clearBtn);
+	connect(tb_clearBtn, &QPushButton::clicked, this, &MainWindow::clearOutput);
 
 	//	中央視窗與主板
 	QWidget* centralWidget = new QWidget(this);
@@ -70,8 +74,8 @@ MainWindow::MainWindow(QWidget* parent)
 
 
 }
-// 檢查前景視窗的按鈕開關:用計時器去觸發API函式
 void MainWindow::toggleCheckForegroundWindow() {
+	// 檢查前景視窗的按鈕開關:用計時器去觸發API函式
 	m_isMonitoring = !m_isMonitoring;  //True/False 交替
 
 	if (m_isMonitoring) {
@@ -90,7 +94,7 @@ void MainWindow::toggleCheckForegroundWindow() {
 }
 
 void MainWindow::doCheckForegroundWindow() {
-
+	//呼叫控制器去取得前景視窗資訊
 	WindowDetailInfo result = m_controller.handleBindForegroundWindow();
 	if (result.windowTitle.empty()) {
 		return;
@@ -104,9 +108,9 @@ void MainWindow::doCheckForegroundWindow() {
 	outputText->appendPlainText(displayText);
 }
 
-//得到所有可見視窗
 
 void MainWindow::getAllWindows() {
+	//得到所有可見視窗
 	std::vector<WindowDetailInfo> results;
 	results = m_controller.getAllWindows();
 	for (const auto& result : results) {
@@ -116,4 +120,8 @@ void MainWindow::getAllWindows() {
 			.arg(hwndStr);
 		outputText->appendPlainText(displayText);
 	}
+}
+
+void MainWindow::clearOutput() {
+	outputText->clear();
 }
