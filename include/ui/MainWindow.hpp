@@ -39,7 +39,7 @@ private slots:
     /**
      * @brief 「列出所有頂層視窗」按鈕點擊事件
      */
-    void getAllWindows();
+    void showAllTopWindows();
 
     /**
      * @brief 「清空」按鈕點擊事件，清除輸出欄位內容
@@ -60,7 +60,7 @@ private :
     //Btn
      
 	QPushButton* m_btnGetForegroundInfo;
-    QPushButton* m_showAllTopWindows;
+    QPushButton* m_btnShowAllTopWindows;
     QPushButton* m_btnCheckWindowByTitle;
 
     QPushButton* tb_exitBtn;

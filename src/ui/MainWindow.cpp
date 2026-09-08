@@ -44,9 +44,9 @@ MainWindow::MainWindow(QWidget* parent)
 	leftLayout->addWidget(m_btnGetForegroundInfo);
 	connect(m_btnGetForegroundInfo, &QPushButton::clicked, this, &MainWindow::toggleCheckForegroundWindow);
 
-	m_showAllTopWindows = new QPushButton("列出所有頂層視窗");
-	leftLayout->addWidget(m_showAllTopWindows);
-	connect(m_showAllTopWindows, &QPushButton::clicked, this, &MainWindow::getAllWindows);
+	m_btnShowAllTopWindows = new QPushButton("列出所有頂層視窗");
+	leftLayout->addWidget(m_btnShowAllTopWindows);
+	connect(m_btnShowAllTopWindows, &QPushButton::clicked, this, &MainWindow::showAllTopWindows);
 
 	//m_btnCheckWindowByTitle 
 
@@ -111,7 +111,7 @@ void MainWindow::doCheckForegroundWindow() {
 }
 
 
-void MainWindow::getAllWindows() {
+void MainWindow::showAllTopWindows() {
 	//得到所有可見視窗
 	std::vector<WindowDetailInfo> results;
 	results = m_controller.getAllWindows();
