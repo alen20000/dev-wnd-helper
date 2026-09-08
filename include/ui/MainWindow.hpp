@@ -61,6 +61,8 @@ private :
      
 	QPushButton* m_btnGetForegroundInfo;
     QPushButton* m_showAllTopWindows;
+    QPushButton* m_btnCheckWindowByTitle;
+
     QPushButton* tb_exitBtn;
 	QPushButton* tb_clearBtn;
     // Text Box

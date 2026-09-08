@@ -40,15 +40,17 @@ MainWindow::MainWindow(QWidget* parent)
 	QVBoxLayout* leftLayout = new QVBoxLayout();
 
 
-	m_btnGetForegroundInfo = new QPushButton("頂層視窗檢測", centralWidget);
+	m_btnGetForegroundInfo = new QPushButton("頂層視窗檢測");
 	leftLayout->addWidget(m_btnGetForegroundInfo);
 	connect(m_btnGetForegroundInfo, &QPushButton::clicked, this, &MainWindow::toggleCheckForegroundWindow);
 
-	m_showAllTopWindows = new QPushButton("列出所有頂層視窗", centralWidget);
+	m_showAllTopWindows = new QPushButton("列出所有頂層視窗");
 	leftLayout->addWidget(m_showAllTopWindows);
 	connect(m_showAllTopWindows, &QPushButton::clicked, this, &MainWindow::getAllWindows);
 
-	leftLayout->addStretch(); //
+	//m_btnCheckWindowByTitle 
+
+	leftLayout->addStretch(); 
 
 	// 右側垂直版(欄位)
 	QVBoxLayout* rightLayout = new QVBoxLayout();
