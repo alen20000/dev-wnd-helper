@@ -46,6 +46,10 @@ private slots:
      */
     void clearOutput();
 
+	/**
+	 * @brief 「依標題找視窗」按鈕點擊事件，查詢指定標題的視窗
+	 */
+	void checkWindowByTitle();
 private :
 
 

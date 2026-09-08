@@ -19,6 +19,6 @@ public:
     
     std::vector<WindowDetailInfo> getAllWindows();
 
-    void handleFindTargetWindow();
+    void getWindowByTitle();
 
 };

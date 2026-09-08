@@ -48,7 +48,9 @@ MainWindow::MainWindow(QWidget* parent)
 	leftLayout->addWidget(m_btnShowAllTopWindows);
 	connect(m_btnShowAllTopWindows, &QPushButton::clicked, this, &MainWindow::showAllTopWindows);
 
-	//m_btnCheckWindowByTitle 
+	m_btnCheckWindowByTitle = new QPushButton("依標題找視窗");
+	leftLayout->addWidget(m_btnCheckWindowByTitle);
+	connect(m_btnCheckWindowByTitle, &QPushButton::clicked, this, &MainWindow::checkWindowByTitle);
 
 	leftLayout->addStretch(); 
 
@@ -122,6 +124,17 @@ void MainWindow::showAllTopWindows() {
 			.arg(hwndStr);
 		outputText->appendPlainText(displayText);
 	}
+}
+
+void MainWindow::checkWindowByTitle() {
+	// 獲取輸入的標題
+	QString title = targetInputText->text();
+	if (title.isEmpty()) {
+		QMessageBox::warning(this, "警告", "請輸入視窗標題！");
+		return;
+	}
+
+
 }
 
 void MainWindow::clearOutput() {

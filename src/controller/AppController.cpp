@@ -54,21 +54,9 @@ std::vector<WindowDetailInfo> AppController::getAllWindows() {
 }
 
 
-void AppController::handleFindTargetWindow() {
+void AppController::getWindowByTitle() {
 
 	WndHandle myWindow;
 	std::wstring windowTitle;
 
-	std::cout << "輸入要找尋視窗標題:";
-
-	std::cin.clear();
-	std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-	std::getline(std::wcin, windowTitle);
-
-	if (myWindow.findTargetWindow(windowTitle)) {
-		std::cout << "有視窗";
-	}
-	else {
-		std::cout << "沒有視窗";
-	}
 }	
