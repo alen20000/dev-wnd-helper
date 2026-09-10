@@ -1,5 +1,6 @@
-#include "ui\MainWindow.hpp"
-#include "controller\AppController.hpp"
+#include "ui/MainWindow.hpp"
+#include "ui/ScreenToolTab.hpp"
+//#include "controller/AppController.hpp"
 #include "DataTypes.hpp"
 #include <QWidget>
 #include <QMainWindow>
@@ -32,11 +33,16 @@ MainWindow::MainWindow(QWidget* parent)
 	connect(tb_clearBtn, &QPushButton::clicked, this, &MainWindow::clearOutput);
 
 
-	// 分頁容器
+	/**
+	 * @brief
+	 *		放置 m_MainTab做為中央元件，
+	 *		未來的新分頁擴充在此處串接
+	 */
 	QTabWidget* m_MainTab = new QTabWidget(this);
 	setCentralWidget(m_MainTab);
 
-	
+	ScreenToolTab* m_ScreenToolTab = new ScreenToolTab();
+	m_MainTab->addTab(m_ScreenToolTab, "螢幕工具");
 
 	//	m_MainTab布局
 	QHBoxLayout* mainLayout = new QHBoxLayout(m_MainTab);
