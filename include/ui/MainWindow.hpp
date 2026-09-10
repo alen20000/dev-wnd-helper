@@ -10,6 +10,9 @@
 #include <QMainWindow>
 #include <QToolBar>
 
+// Forward declaration
+class QTabWidget;
+
 
 /**
  * @brief 主視窗，負責 UI 佈局與使用者互動事件
