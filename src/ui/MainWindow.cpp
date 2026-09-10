@@ -41,7 +41,14 @@ MainWindow::MainWindow(QWidget* parent)
 	QTabWidget* m_MainTab = new QTabWidget(this);
 	setCentralWidget(m_MainTab);
 
+	// 「視窗工具」容器
+	QWidget* windowCheckTab = new QWidget(this);
+
+	// 「螢幕工具」分頁
 	ScreenToolTab* m_ScreenToolTab = new ScreenToolTab();
+
+	// 將分頁加入主分頁
+	m_MainTab->addTab(windowCheckTab, "視窗工具");
 	m_MainTab->addTab(m_ScreenToolTab, "螢幕工具");
 
 	//	m_MainTab布局
@@ -85,7 +92,7 @@ MainWindow::MainWindow(QWidget* parent)
 	//合併版面
 	mainLayout->addLayout(leftLayout);
 	mainLayout->addLayout(rightLayout);
-
+	windowCheckTab->setLayout(mainLayout);
 
 
 

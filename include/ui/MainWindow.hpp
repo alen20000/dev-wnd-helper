@@ -63,6 +63,7 @@ private :
     
     //Tab
 	QTabWidget* m_MainTab;
+    QWidget* windowCheckTab;
 
     // Layout
     QHBoxLayout* mainLayout;
