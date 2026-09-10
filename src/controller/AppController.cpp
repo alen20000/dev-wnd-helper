@@ -54,9 +54,7 @@ std::vector<WindowDetailInfo> AppController::getAllWindows() {
 }
 
 
-void AppController::getWindowByTitle() {
+HWND AppController::getWindowByTitle(const std::wstring& windowTitle) {
 
-	WndHandle myWindow;
-	std::wstring windowTitle;
-
+	return reinterpret_cast<HWND>(0x9999);
 }	

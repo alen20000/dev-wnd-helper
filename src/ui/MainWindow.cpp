@@ -129,11 +129,28 @@ void MainWindow::showAllTopWindows() {
 void MainWindow::checkWindowByTitle() {
 	// 獲取輸入的標題
 	QString title = targetInputText->text();
+
+	// 防呆警告
 	if (title.isEmpty()) {
 		QMessageBox::warning(this, "警告", "請輸入視窗標題！");
 		return;
 	}
 
+	std::wstring stdTitle = title.toStdWString();
+
+	auto hwnd = m_controller.getWindowByTitle(stdTitle);
+
+	if (hwnd != nullptr) {
+		QString hwndStr = QString::number(reinterpret_cast<quintptr>(hwnd), 10);
+		QString displayText = QString("找到視窗! 標題: %1 | 窗柄 (HWND): %2")
+			.arg(title)
+			.arg(hwndStr);
+		outputText->appendPlainText(displayText);
+	}
+	else {
+		QString displayText = QString("未找到視窗，標題: %1").arg(title);
+		outputText->appendPlainText(displayText);
+	}
 
 }
 

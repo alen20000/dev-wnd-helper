@@ -5,6 +5,8 @@
 #include <functional>
 #include <string>
 #include <vector>
+#include <windows.h>
+
 class AppController {
 private:
     HWND m_lastHwnd = nullptr;
@@ -19,6 +21,6 @@ public:
     
     std::vector<WindowDetailInfo> getAllWindows();
 
-    void getWindowByTitle();
+    HWND getWindowByTitle(const std::wstring& windowTitle);
 
 };

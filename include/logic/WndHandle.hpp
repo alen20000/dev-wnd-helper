@@ -33,10 +33,13 @@ public:
      */
     static std::vector<WindowDetailInfo> listAllTopLevelWindows();
 
-    // 尋找目標視窗
-    bool findTargetWindow(const std::wstring& windowTitle);
 
-    HWND getWindowHandle() const { return window_hwnd; }
+    /**
+	 * @brief 找出指定標題的視窗控制代碼
+     * @return 
+     * @note 
+     */
+    static HWND getWindowHandle(const std::wstring& windowTitle);
 
 };
 

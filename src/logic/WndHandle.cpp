@@ -76,21 +76,17 @@ std::vector<WindowDetailInfo> WndHandle::listAllTopLevelWindows() {
     return context.windows;
 }
 
-bool WndHandle::findTargetWindow(const std::wstring& windowTitle) {
+HWND WndHandle::getWindowHandle(const std::wstring& windowTitle) {
     // 輸入窗口標題，判斷有沒有這窗口
     // Args:
     //      窗口標題
     //Return:
-    //      true|false
-    window_hwnd = FindWindowW(nullptr, windowTitle.c_str());
+
+    HWND window_hwnd = FindWindowW(nullptr, windowTitle.c_str());
 
     if (window_hwnd != nullptr) {
 
-        return true;
-    }
-    else {
-
-        return false;
+        return window_hwnd;
     }
 }
 
