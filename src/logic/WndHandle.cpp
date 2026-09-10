@@ -88,5 +88,8 @@ HWND WndHandle::getWindowHandle(const std::wstring& windowTitle) {
 
         return window_hwnd;
     }
+    else {
+		return nullptr;
+    }
 }
 
