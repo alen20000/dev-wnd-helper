@@ -6,7 +6,7 @@
 #include <QLabel>
 #include <QLineEdit>
 #include <QPlainTextEdit>
-#include "controller\AppController.hpp"
+#include "controller/AppController.hpp"
 #include <QMainWindow>
 #include <QToolBar>
 
@@ -60,10 +60,15 @@ private :
 
     //ToolBar
     QToolBar* toolBar;
+    
+    //Tab
+	QTabWidget* m_MainTab;
+
     // Layout
     QHBoxLayout* mainLayout;
     QHBoxLayout* leftLayout;
     QHBoxLayout* rightLayout;
+
     //Btn
      
 	QPushButton* m_btnGetForegroundInfo;

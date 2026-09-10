@@ -10,6 +10,7 @@
 #include <QLineEdit>
 #include <QTimer>
 #include <iostream>
+#include <QTabWidget>
 
 MainWindow::MainWindow(QWidget* parent)
 	: QMainWindow(parent) //初始化父類或成員變數
@@ -30,10 +31,15 @@ MainWindow::MainWindow(QWidget* parent)
 	toolBar->addWidget(tb_clearBtn);
 	connect(tb_clearBtn, &QPushButton::clicked, this, &MainWindow::clearOutput);
 
-	//	中央視窗與主板
-	QWidget* centralWidget = new QWidget(this);
-	setCentralWidget(centralWidget);
-	QHBoxLayout* mainLayout = new QHBoxLayout(centralWidget);
+
+	// 分頁容器
+	QTabWidget* m_MainTab = new QTabWidget(this);
+	setCentralWidget(m_MainTab);
+
+	
+
+	//	m_MainTab布局
+	QHBoxLayout* mainLayout = new QHBoxLayout(m_MainTab);
 
 
 	// 左側垂直版(按鈕)
