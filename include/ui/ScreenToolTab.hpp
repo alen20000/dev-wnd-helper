@@ -2,6 +2,8 @@
 
 #include <QWidget>
 #include <QPushButton>
+#include <QVBoxLayout>
+
 class ScreenToolTab : public QWidget {
 	Q_OBJECT
 
