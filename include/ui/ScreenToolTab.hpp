@@ -23,4 +23,7 @@ private:
 	//Btn
 	QPushButton* m_maginifer;
 
+	//Display
+	QWidget* m_magnifierDisplay;
+
 };
