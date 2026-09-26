@@ -1,13 +1,10 @@
-#define WIN32_LEAN_AND_MEAN  //預防加載到windos肥大的標頭檔
-#define NOMINMAX //禁止使用微軟的max巨集
-
+#include <windows.h>
 #include "controller/Appcontroller.hpp"
 #include "logic/WndHandle.hpp"
 #include "DataTypes.hpp"
 #include <iostream>	
 #include <cstdint>
 #include <unordered_map>
-#include <windows.h>
 #include <vector>
 #include <limits> 
 AppController::AppController() {

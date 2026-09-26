@@ -1,7 +1,5 @@
-#include "ui/ScreenToolTab.hpp"
-#define WIN32_LEAN_AND_MEAN  // 排除微軟少用、又肥的標頭檔
-#define NOMINMAX //關掉微軟的全域 min/max 巨集
 #include <windows.h>
+#include "ui/ScreenToolTab.hpp"
 #include <QVBoxLayout>
 #include <QPushButton>
 ScreenToolTab::ScreenToolTab(QWidget* parent)

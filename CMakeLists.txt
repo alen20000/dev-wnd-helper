@@ -21,8 +21,6 @@ find_package(Qt6 REQUIRED COMPONENTS Core Widgets)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
-# =======================
-
 # ====== 原始檔案變數 ===
 set (logic_sources
     "src/logic/WndHandle.cpp"
@@ -51,6 +49,11 @@ target_include_directories(wnd-helper PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
+# =======全域注入巨集===
+target_compile_definitions(wnd-helper PRIVATE
+    WIN32_LEAN_AND_MEAN
+    NOMINMAX
+)
 # ===== 連結動態庫 =====
 target_link_libraries(wnd-helper PRIVATE Qt6::Core Qt6::Widgets)
 
