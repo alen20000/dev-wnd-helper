@@ -1,7 +1,7 @@
-#include <windows.h>
 #include "ui/ScreenToolTab.hpp"
 #include <QVBoxLayout>
 #include <QPushButton>
+#include <windows.h>
 ScreenToolTab::ScreenToolTab(QWidget* parent)
     : QWidget(parent)
 {

@@ -1,11 +1,12 @@
 #include "logic/WndHandle.hpp"
 #include "DataTypes.hpp"
+
 #include <iostream>
-#include <windows.h>
 #include <string>
 #include <utility>
 #include <vector>
 
+#include <windows.h>
 WndHandle::WndHandle() : window_hwnd(nullptr) {}
 
 std::pair<HWND, std::wstring> WndHandle::bindForegroundWindow(){

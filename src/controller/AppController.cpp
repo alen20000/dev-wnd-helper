@@ -1,12 +1,14 @@
-#include <windows.h>
 #include "controller/Appcontroller.hpp"
 #include "logic/WndHandle.hpp"
 #include "DataTypes.hpp"
+
 #include <iostream>	
 #include <cstdint>
 #include <unordered_map>
 #include <vector>
 #include <limits> 
+
+#include <windows.h>
 AppController::AppController() {
 
 

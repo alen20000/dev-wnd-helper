@@ -2,6 +2,7 @@
 #include "ui/ScreenToolTab.hpp"
 //#include "controller/AppController.hpp"
 #include "DataTypes.hpp"
+
 #include <QWidget>
 #include <QMainWindow>
 #include <QToolBar>
@@ -10,8 +11,9 @@
 #include <QPushButton>
 #include <QLineEdit>
 #include <QTimer>
-#include <iostream>
 #include <QTabWidget>
+
+#include <iostream>
 
 MainWindow::MainWindow(QWidget* parent)
 	: QMainWindow(parent) //初始化父類或成員變數
