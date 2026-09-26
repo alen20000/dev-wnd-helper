@@ -26,6 +26,7 @@ set(CMAKE_AUTORCC ON)
 # ====== 原始檔案變數 ===
 set (logic_sources
     "src/logic/WndHandle.cpp"
+    "src/logic/MagnifierHandle.cpp"
 )
 set(controller_sources
     "src/controller/AppController.cpp"
