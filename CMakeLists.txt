@@ -30,6 +30,7 @@ set (logic_sources
 )
 set(controller_sources
     "src/controller/AppController.cpp"
+    "src/controller/MagniferController.cpp"
 )
 set(ui_sources
     "src/ui/MainWindow.cpp"

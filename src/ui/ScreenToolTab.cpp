@@ -25,10 +25,10 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
 
 #pragma endregion
 }
-
+// @brief 放大鏡切換
 void ScreenToolTab::toggleMagnifier() {
-    HWND parentHwnd = (HWND)m_magnifierDisplay->winId();
-    // 預設:放大鏡切換
+	HWND hwndMagContainer = (HWND)m_magnifierDisplay->winId();  // Qt 內部不會幫每個 widget 建立獨立的window handle，而是要底層溝通時在用winID建立物件的窗柄
 
-    qDebug() << "MagnifierDisplay HWND:" << (void*)parentHwnd; //測試
+
+    qDebug() << "MagnifierDisplay HWND:" << (void*)hwndMagContainer; //測試
 }

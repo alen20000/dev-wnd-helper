@@ -6,7 +6,10 @@
 #include <string>
 #include <vector>
 #include <windows.h>
-
+/**
+ * @brief
+ * 主司應用程式、視窗的控制器
+ */
 class AppController {
 private:
     HWND m_lastHwnd = nullptr;
