@@ -1,4 +1,4 @@
-#include "controller/Appcontroller.hpp"
+#include "controller/AppController.hpp"
 #include "logic/WndHandle.hpp"
 #include "DataTypes.hpp"
 
