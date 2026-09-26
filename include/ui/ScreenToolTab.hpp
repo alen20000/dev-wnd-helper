@@ -26,4 +26,9 @@ private:
 	//Display
 	QWidget* m_magnifierDisplay;
 
+	//Flag
+	bool m_isMagnifier = false;
+
+	// Qt物件窗柄
+	HWND hwndMagContainer;
 };

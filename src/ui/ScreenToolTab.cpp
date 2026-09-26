@@ -2,6 +2,9 @@
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <windows.h>
+
+#include "controller/MagnifierController.hpp"
+
 ScreenToolTab::ScreenToolTab(QWidget* parent)
     : QWidget(parent)
 {
@@ -26,7 +29,12 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
 // @brief 放大鏡切換
 void ScreenToolTab::toggleMagnifier() {
 	HWND hwndMagContainer = (HWND)m_magnifierDisplay->winId();  // Qt 內部不會幫每個 widget 建立獨立的window handle，而是要底層溝通時在用winID建立物件的窗柄
+    m_isMagnifier = !m_isMagnifier;
+
+    if (m_isMagnifier) {
+        // 啟動放大鏡
+        qDebug() << "MagnifierDisplay HWND:" << (void*)hwndMagContainer; //測試
+    }
 
 
-    qDebug() << "MagnifierDisplay HWND:" << (void*)hwndMagContainer; //測試
 }
