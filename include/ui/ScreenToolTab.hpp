@@ -1,5 +1,5 @@
 #pragma once
-
+#include "controller/MagnifierController.hpp"
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
@@ -31,4 +31,7 @@ private:
 
 	// Qt物件窗柄
 	HWND hwndMagContainer;
+
+	//初始化
+	MagnifierController m_controller;
 };

@@ -4,7 +4,7 @@
 
 class MagnifierController {
 public:
-	MagnifierController();
+	MagnifierController() = default;
 
 	/**
 	 * @brief 啟動放大鏡功能

@@ -1,9 +1,10 @@
 #include "ui/ScreenToolTab.hpp"
+
 #include <QVBoxLayout>
 #include <QPushButton>
 #include <windows.h>
 
-#include "controller/MagnifierController.hpp"
+
 
 ScreenToolTab::ScreenToolTab(QWidget* parent)
     : QWidget(parent)
@@ -34,6 +35,7 @@ void ScreenToolTab::toggleMagnifier() {
     if (m_isMagnifier) {
         // 啟動放大鏡
         qDebug() << "MagnifierDisplay HWND:" << (void*)hwndMagContainer; //測試
+        m_controller.startMagnifier(hwndMagContainer);
     }
 
 
