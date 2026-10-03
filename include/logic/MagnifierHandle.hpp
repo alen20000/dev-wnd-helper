@@ -16,11 +16,15 @@ public:
 
 	// @brief 初始化 magnifier 
 	bool initialize();
+
 	// @brief 銷毀 magnifier 視窗
 	void destroyMagnifierWindow();
 
 	// @brief 建立視窗
 	bool createMagnifierWindow(HWND m_hwndParent, int width, int height);
+
+	// @brief 更新 magnifier
+	void updateMagnifier(HWND hwndMagContainer, int width, int height, float zoomLevel);
 
 private:
 

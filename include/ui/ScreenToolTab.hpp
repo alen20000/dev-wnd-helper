@@ -3,6 +3,7 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QTimer>
 
 class ScreenToolTab : public QWidget {
 	Q_OBJECT
@@ -31,6 +32,9 @@ private:
 
 	// Qt物件窗柄
 	HWND hwndMagContainer;
+
+	// Magnifier 更新計時器
+	QTimer* m_updateTimer;
 
 	//初始化
 	MagnifierController m_controller;

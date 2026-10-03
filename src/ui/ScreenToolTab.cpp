@@ -7,9 +7,12 @@
 
 
 ScreenToolTab::ScreenToolTab(QWidget* parent)
-    : QWidget(parent)
+    : QWidget(parent), m_isMagnifier(false)
 {
 #pragma region UI 初始化與排版 (UI Setup)
+
+	// 初始化更新用計時器
+    m_updateTimer = new QTimer(this);
 
     // Btn
     QPushButton* m_maginifer = new QPushButton("Magnifier", this);
@@ -24,6 +27,13 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
     layout->addWidget(m_maginifer);
     layout->addWidget(m_magnifierDisplay);
     #pragma endregion
+
+    // Bind
+	connect(m_updateTimer, &QTimer::timeout, [this]() {
+		if (m_isMagnifier && hwndMagContainer) {
+
+		}
+	});
 
 #pragma endregion
 }

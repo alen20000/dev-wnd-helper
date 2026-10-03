@@ -19,3 +19,9 @@ bool MagnifierController::startMagnifier(HWND hwndMagContainer,int width, int he
 	std::cout << "放大鏡啟動成功" << std::endl;
     return true;
 }
+
+bool MagnifierController::updateMagnifier(HWND hwndMagContainer, int width, int height, float zoomLevel) {
+
+	m_magnifierHandle.updateMagnifier(hwndMagContainer, width, height, zoomLevel);
+	return true;
+}
