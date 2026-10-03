@@ -1,6 +1,5 @@
 #pragma once
 
-
 #include <windows.h>
 #include <magnification.h>
 
@@ -19,6 +18,9 @@ public:
 	bool initialize();
 	// @brief 銷毀 magnifier 視窗
 	void destroyMagnifierWindow();
+
+	// @brief 建立視窗
+	bool createMagnifierWindow(HWND m_hwndParent);
 
 private:
 

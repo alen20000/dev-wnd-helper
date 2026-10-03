@@ -1,5 +1,6 @@
 #pragma once
-   
+#include "logic/MagnifierHandle.hpp"
+
 #include <windows.h>
 
 class MagnifierController {
@@ -13,6 +14,9 @@ public:
 	 */
 	bool startMagnifier(HWND hwndMagContainer);
 
+
+	// 初始化
+	MagnifierHandle m_magnifierHandle;
 private:
 
 
