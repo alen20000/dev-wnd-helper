@@ -58,5 +58,9 @@ target_compile_definitions(wnd-helper PRIVATE
 # ===== 連結動態庫 =====
 target_link_libraries(wnd-helper PRIVATE Qt6::Core Qt6::Widgets)
 
+if(WIN32)  # 連結 Magnification.dll
+    target_link_libraries(wnd-helper PRIVATE Magnification)
+endif()
+
 #加載測試用Sub-CMakeLists.txt
 #add_subdirectory(examples)
