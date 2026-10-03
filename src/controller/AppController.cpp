@@ -9,11 +9,7 @@
 #include <limits> 
 
 #include <windows.h>
-AppController::AppController() {
 
-
-
-}
 
 WindowDetailInfo AppController::handleBindForegroundWindow() {
 	//獲取前景視窗與句柄
