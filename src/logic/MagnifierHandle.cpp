@@ -24,7 +24,7 @@ bool MagnifierHandle::createMagnifierWindow(HWND hwndParent) {
 		WC_MAGNIFIER, // API 對定義好的視窗常數
 		TEXT("MagnifierWindow"), // Window title
 		WS_CHILD | WS_VISIBLE, // Window style
-		500, 600, // 滑鼠位置
+		0, 0, // 滑鼠位置
 		120, 120, // 視窗寬高
 		hwndParent, // Parent window handle
 		NULL, // 子視窗選單
