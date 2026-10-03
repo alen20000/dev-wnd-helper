@@ -2,7 +2,8 @@
 #include "ui/MainWindow.hpp"
 #include <QApplication>
 int main(int argc, char* argv[]) {
-
+	// 命令提示字元強制切換為 UTF-8 編碼
+	system("chcp 65001 > nul");
 	//實例化物件
 	QApplication app(argc, argv);  //Qt盡量優先
 	AppController controller;
