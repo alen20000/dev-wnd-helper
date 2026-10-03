@@ -20,7 +20,7 @@ public:
 	void destroyMagnifierWindow();
 
 	// @brief 建立視窗
-	bool createMagnifierWindow(HWND m_hwndParent);
+	bool createMagnifierWindow(HWND m_hwndParent, int width, int height);
 
 private:
 

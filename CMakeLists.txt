@@ -51,7 +51,7 @@ target_include_directories(wnd-helper PRIVATE
     ${CMAKE_CURRENT_SOURCE_DIR}/include
 )
 
-# =======全域注入巨集===
+# =======全域不注入巨集===
 target_compile_definitions(wnd-helper PRIVATE
     WIN32_LEAN_AND_MEAN
     NOMINMAX

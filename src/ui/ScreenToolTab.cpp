@@ -35,7 +35,11 @@ void ScreenToolTab::toggleMagnifier() {
     if (m_isMagnifier) {
         // 啟動放大鏡
         qDebug() << "MagnifierDisplay HWND:" << (void*)hwndMagContainer; //測試
-        m_controller.startMagnifier(hwndMagContainer);
+ 
+        int w = m_magnifierDisplay->width();
+        int h = m_magnifierDisplay->height();
+ 
+        m_controller.startMagnifier(hwndMagContainer,w,h);
     }
 
 

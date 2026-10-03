@@ -2,7 +2,7 @@
 
 #include <iostream>
 
-bool MagnifierController::startMagnifier(HWND hwndMagContainer) {
+bool MagnifierController::startMagnifier(HWND hwndMagContainer,int width, int height) {
     // Implementation for starting magnifier
 	std::cout << "TEST:" << hwndMagContainer << std::endl;
 	
@@ -12,7 +12,7 @@ bool MagnifierController::startMagnifier(HWND hwndMagContainer) {
 
 	}
 	
-	if (!m_magnifierHandle.createMagnifierWindow(hwndMagContainer)) {
+	if (!m_magnifierHandle.createMagnifierWindow(hwndMagContainer, width, height)) {
 		std::cerr << "創建放大鏡視窗失敗" << std::endl;
 		return false;
 	}
