@@ -16,10 +16,12 @@ public:
 	~MagnifierHandle();
 
 	// @brief 初始化 magnifier 
-	bool initialize(HWND parentHwnd);
+	bool initialize();
+	// @brief 銷毀 magnifier 視窗
+	void destroyMagnifierWindow();
 
 private:
 
-	// @brief 掛勾Qt視窗內的 magnifier 視窗
-	HWND m_hMagWnd;
+	// @brief 父視窗的句柄
+	HWND m_hwndMag;
 };
