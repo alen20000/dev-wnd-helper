@@ -41,13 +41,15 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
 
         if (m_isMagnifier && hwndMagContainer) {
 
-            int width = m_magnifierDisplay->width();
-            int height = m_magnifierDisplay->height();
+            // 取DPI常數去換算實際像素
+            qreal dpr = m_magnifierDisplay->devicePixelRatioF();  
+            int w = static_cast<int>(m_magnifierDisplay->width() * dpr);
+            int h = static_cast<int>(m_magnifierDisplay->height() * dpr);
 
             // 放大倍率
             float zoomLevel = 4.0f;
 
-            m_controller.updateMagnifier(width, height, zoomLevel);
+            m_controller.updateMagnifier(w, h, zoomLevel);
         }
         });
 
