@@ -8,7 +8,7 @@
 
 
 ScreenToolTab::ScreenToolTab(QWidget* parent)
-    : QWidget(parent), m_isMagnifier(false)
+    : QWidget(parent), m_isMagnifier(false), hwndMagContainer(nullptr)
 {
 #pragma region UI 初始化與排版 (UI Setup)
 
@@ -67,7 +67,13 @@ void ScreenToolTab::toggleMagnifier() {
         int h = m_magnifierDisplay->height();
 
         m_controller.startMagnifier(hwndMagContainer,w,h);
-        m_updateTimer->start(16);
+        
+        // 每 30ms 更新一次 → 1000 / 30 ≈ 33 FPS
+        m_updateTimer->start(30);
+    }
+    else {
+		m_updateTimer->stop();
+        m_controller.stopMagnifier();
     }
 
 

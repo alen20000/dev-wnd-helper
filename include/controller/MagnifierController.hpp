@@ -5,6 +5,7 @@
 
 class MagnifierController {
 public:
+
 	MagnifierController() = default;
 
 	/**
@@ -16,7 +17,6 @@ public:
 	
 	/**
 	 * @brief 更新放大鏡的顯示內容
-	 * @param hwndMagContainer 放大鏡容器的窗口句柄
 	 * @param width 放大鏡容器的寬度
 	 * @param height 放大鏡容器的高度
 	 * @param zoomLevel 放大鏡的縮放級別
@@ -24,6 +24,13 @@ public:
 	 */
 
 	bool updateMagnifier(int width, int height, float zoomLevel);
+
+	/**
+	 * @brief 停止放大鏡功能
+	 * @return 如果停止成功，返回 true；否則返回 false
+	 */
+	bool stopMagnifier();
+
 	// 初始化
 	MagnifierHandle m_magnifierHandle;
 private:
