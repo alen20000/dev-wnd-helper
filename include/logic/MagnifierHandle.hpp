@@ -30,4 +30,6 @@ private:
 
 	// @brief 放大鏡視窗的句柄
 	HWND m_hwndMag;
+
+	int m_windowSize;
 };

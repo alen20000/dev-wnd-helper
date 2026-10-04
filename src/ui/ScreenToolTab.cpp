@@ -22,7 +22,7 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
     // 視窗容器
 	m_magnifierDisplay = new QWidget(this);
 
-
+    m_magnifierDisplay->setMinimumSize(200, 200); // 保證最小尺寸
 	m_magnifierDisplay->setAttribute(Qt::WA_NativeWindow, true); // 強制讓該widget 擁有自己的原生窗口句柄
     m_magnifierDisplay->setAttribute(Qt::WA_StyledBackground, true);
     m_magnifierDisplay->setStyleSheet("background-color: gray;");
@@ -31,7 +31,7 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
     #pragma region 排版
     QVBoxLayout* m_layout = new QVBoxLayout(this);
     m_layout->addWidget(m_maginifer);
-    m_layout->addWidget(m_magnifierDisplay);
+    m_layout->addWidget(m_magnifierDisplay, 1 );// 1 = 佔滿剩餘空間
     #pragma endregion
 
      //Bind Event
