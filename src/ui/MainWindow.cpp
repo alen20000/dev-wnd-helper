@@ -44,17 +44,17 @@ MainWindow::MainWindow(QWidget* parent)
 	setCentralWidget(m_MainTab);
 
 	// 「視窗工具」容器
-	QWidget* windowCheckTab = new QWidget(this);
+	QWidget* m_windowCheckTab = new QWidget(this);
 
 	// 「螢幕工具」分頁
 	ScreenToolTab* m_ScreenToolTab = new ScreenToolTab();
 
 	// 將分頁加入主分頁
-	m_MainTab->addTab(windowCheckTab, "視窗工具");
+	m_MainTab->addTab(m_windowCheckTab, "視窗工具");
 	m_MainTab->addTab(m_ScreenToolTab, "螢幕工具");
 
-	//	m_MainTab布局
-	QHBoxLayout* mainLayout = new QHBoxLayout(m_MainTab);
+	//	視窗工具掛入 m_MainTab
+	QHBoxLayout* mainLayout = new QHBoxLayout(m_windowCheckTab);
 
 
 	// 左側垂直版(按鈕)
@@ -94,7 +94,7 @@ MainWindow::MainWindow(QWidget* parent)
 	//合併版面
 	mainLayout->addLayout(leftLayout);
 	mainLayout->addLayout(rightLayout);
-	windowCheckTab->setLayout(mainLayout);
+	m_windowCheckTab->setLayout(mainLayout);
 
 
 
