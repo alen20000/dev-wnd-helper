@@ -4,6 +4,7 @@
 #include <QPushButton>
 #include <windows.h>
 
+#include <iostream>
 
 
 ScreenToolTab::ScreenToolTab(QWidget* parent)
@@ -20,18 +21,31 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
 
     // 視窗容器
 	m_magnifierDisplay = new QWidget(this);
+
+
+	m_magnifierDisplay->setAttribute(Qt::WA_NativeWindow, true); // 強制讓該widget 擁有自己的原生窗口句柄
+    m_magnifierDisplay->setAttribute(Qt::WA_StyledBackground, true);
     m_magnifierDisplay->setStyleSheet("background-color: gray;");
 
+
     #pragma region 排版
-    QVBoxLayout* layout = new QVBoxLayout(this);
-    layout->addWidget(m_maginifer);
-    layout->addWidget(m_magnifierDisplay);
+    QVBoxLayout* m_layout = new QVBoxLayout(this);
+    m_layout->addWidget(m_maginifer);
+    m_layout->addWidget(m_magnifierDisplay);
     #pragma endregion
 
-    // Bind
+     //Bind Event
 	connect(m_updateTimer, &QTimer::timeout, [this]() {
+
 		if (m_isMagnifier && hwndMagContainer) {
 
+			int width = m_magnifierDisplay->width();
+			int height = m_magnifierDisplay->height();
+            
+            // 放大倍率
+			float zoomLevel = 4.0f; 
+            
+			m_controller.updateMagnifier(width, height, zoomLevel);
 		}
 	});
 
@@ -39,17 +53,21 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
 }
 // @brief 放大鏡切換
 void ScreenToolTab::toggleMagnifier() {
-	HWND hwndMagContainer = (HWND)m_magnifierDisplay->winId();  // Qt 內部不會幫每個 widget 建立獨立的window handle，而是要底層溝通時在用winID建立物件的窗柄
+
+    hwndMagContainer = (HWND)m_magnifierDisplay->winId();  //向Qt索取該widget的原生窗口句柄
     m_isMagnifier = !m_isMagnifier;
 
     if (m_isMagnifier) {
         // 啟動放大鏡
-        qDebug() << "MagnifierDisplay HWND:" << (void*)hwndMagContainer; //測試
- 
+        qDebug() << "Main Widget HWND:" << (HWND)this->winId();
+        qDebug() << "Display Widget HWND:" << (HWND)m_magnifierDisplay->winId();
+        qDebug() << "啟動放大鏡";
+
         int w = m_magnifierDisplay->width();
         int h = m_magnifierDisplay->height();
- 
+
         m_controller.startMagnifier(hwndMagContainer,w,h);
+        m_updateTimer->start(16);
     }
 
 

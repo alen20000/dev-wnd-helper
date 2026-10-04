@@ -20,8 +20,8 @@ bool MagnifierController::startMagnifier(HWND hwndMagContainer,int width, int he
     return true;
 }
 
-bool MagnifierController::updateMagnifier(HWND hwndMagContainer, int width, int height, float zoomLevel) {
+bool MagnifierController::updateMagnifier(int width, int height, float zoomLevel) {
 
-	m_magnifierHandle.updateMagnifier(hwndMagContainer, width, height, zoomLevel);
+	m_magnifierHandle.updateMagnifier(width, height, zoomLevel);
 	return true;
 }

@@ -23,7 +23,7 @@ public:
 	 * @return 如果更新成功，返回 true；否則返回 false
 	 */
 
-	bool updateMagnifier(HWND hwndMagContainer, int width, int height, float zoomLevel);
+	bool updateMagnifier(int width, int height, float zoomLevel);
 	// 初始化
 	MagnifierHandle m_magnifierHandle;
 private:

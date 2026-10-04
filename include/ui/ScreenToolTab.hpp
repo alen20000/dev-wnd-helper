@@ -19,7 +19,7 @@ private slots:
 private:
 
 	//Layout
-	QVBoxLayout* layout;
+	QVBoxLayout* m_layout;
 
 	//Btn
 	QPushButton* m_maginifer;

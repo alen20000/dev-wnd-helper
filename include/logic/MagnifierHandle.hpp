@@ -24,10 +24,10 @@ public:
 	bool createMagnifierWindow(HWND m_hwndParent, int width, int height);
 
 	// @brief 更新 magnifier
-	void updateMagnifier(HWND hwndMagContainer, int width, int height, float zoomLevel);
+	void updateMagnifier(int width, int height, float zoomLevel);
 
 private:
 
-	// @brief 父視窗的句柄
+	// @brief 放大鏡視窗的句柄
 	HWND m_hwndMag;
 };
