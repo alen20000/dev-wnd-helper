@@ -36,6 +36,8 @@ private:
 	// Magnifier 更新計時器
 	QTimer* m_updateTimer;
 
+
+
 	//初始化
 	MagnifierController m_controller;
 };
