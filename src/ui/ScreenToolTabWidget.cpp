@@ -1,4 +1,4 @@
-#include "ui/ScreenToolTab.hpp"
+#include "ui/ScreenToolTabWidget.hpp"
 
 #include <QVBoxLayout>
 #include <QPushButton>

@@ -34,8 +34,8 @@ set(controller_sources
 )
 set(ui_sources
     "src/ui/MainWindowWidget.cpp"
-    "src/ui/ScreenToolTab.cpp"
-    "include/ui/ScreenToolTab.hpp"
+    "src/ui/ScreenToolTabWidget.cpp"
+    "include/ui/ScreenToolTabWidget.hpp"
 )
 # =======================
 add_executable(wnd-helper 
