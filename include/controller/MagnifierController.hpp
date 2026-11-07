@@ -1,6 +1,6 @@
 #pragma once
 #include "logic/MagnifierHandle.hpp"
-
+#include "logic/CursorHandle.hpp"
 #include <windows.h>
 
 class MagnifierController {
@@ -31,9 +31,13 @@ public:
 	 */
 	bool stopMagnifier();
 
-	// 初始化
-	MagnifierHandle m_magnifierHandle;
-private:
+	/**
+	 * @brief 更新游標位置
+	 */
+	void onUpdateCursorPos();
 
+private:
+	MagnifierHandle m_magnifierHandle;
+	CursorHandle m_cursorHandle;
 
 };
