@@ -33,14 +33,14 @@ set(controller_sources
     "include/controller/MagnifierController.hpp"
 )
 set(ui_sources
-    "src/ui/MainWindow.cpp"
+    "src/ui/MainWindowWidget.cpp"
     "src/ui/ScreenToolTab.cpp"
     "include/ui/ScreenToolTab.hpp"
 )
 # =======================
 add_executable(wnd-helper 
     main.cpp
-    "include/ui/MainWindow.hpp"
+    "include/ui/MainWindowWidget.hpp"
     ${logic_sources}
     ${controller_sources}
     ${ui_sources}

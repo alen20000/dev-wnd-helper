@@ -1,4 +1,4 @@
-#include "ui/MainWindow.hpp"
+#include "ui/MainWindowWidget.hpp"
 #include "ui/ScreenToolTab.hpp"
 //#include "controller/AppController.hpp"
 #include "DataTypes.hpp"
