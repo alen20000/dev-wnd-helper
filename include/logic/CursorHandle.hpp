@@ -3,8 +3,7 @@
 class CursorHandle {
 
 public:
-    CursorHandle();
-    ~CursorHandle();
+
     /**
     * @brief 獲取游標位置
     * @param point 用於返回游標位置的POINT結構

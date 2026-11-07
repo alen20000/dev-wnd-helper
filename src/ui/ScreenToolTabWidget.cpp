@@ -50,6 +50,8 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
             float zoomLevel = 4.0f;
 
             m_controller.updateMagnifier(w, h, zoomLevel);
+			// 更新鼠標位置
+            m_controller.onUpdateCursorPos();
         }
         });
 
@@ -71,7 +73,6 @@ void ScreenToolTab::toggleMagnifier() {
         int h = m_magnifierDisplay->height();
 
         m_controller.startMagnifier(hwndMagContainer, w, h);
-
         // 每 30ms 更新一次 → 1000 / 30 ≈ 33 FPS
         m_updateTimer->start(30);
     }

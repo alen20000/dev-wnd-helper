@@ -1,5 +1,5 @@
 #include "controller/AppController.hpp"
-#include "ui/MainWindow.hpp"
+#include "ui/MainWindowWidget.hpp"
 #include <QApplication>
 int main(int argc, char* argv[]) {
 	// 命令提示字元強制切換為 UTF-8 編碼
