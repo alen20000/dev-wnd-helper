@@ -32,10 +32,13 @@ public:
 	bool stopMagnifier();
 
 	/**
-	 * @brief 更新游標位置
+	 * @brief 更新游標位置(測試)
 	 */
 	void onUpdateCursorPos();
-
+	/**
+	* @brief 更新游標位置
+	*/
+	bool getCursorPos(POINT& point) const;
 private:
 	MagnifierHandle m_magnifierHandle;
 	CursorHandle m_cursorHandle;

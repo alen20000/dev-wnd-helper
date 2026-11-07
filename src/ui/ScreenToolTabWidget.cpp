@@ -53,7 +53,7 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
         if (m_isMagnifier && hwndMagContainer) {
 
             // 取DPI常數去換算實際像素
-            qreal dpr = m_magnifierDisplay->devicePixelRatioF();  
+            qreal dpr = m_magnifierDisplay->devicePixelRatioF();
             int w = static_cast<int>(m_magnifierDisplay->width() * dpr);
             int h = static_cast<int>(m_magnifierDisplay->height() * dpr);
 
@@ -61,10 +61,16 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
             float zoomLevel = 4.0f;
 
             m_controller.updateMagnifier(w, h, zoomLevel);
-			// 更新鼠標位置
-            m_controller.onUpdateCursorPos();
+            // 更新鼠標位置
+
+            POINT mousePos;
+
+            if (m_controller.getCursorPos(mousePos))
+            {
+				m_cursorLabel->setText(QString("座標: (%1, %2)").arg(mousePos.x).arg(mousePos.y));
+            }
         }
-        });
+    });
 
 #pragma endregion
 }

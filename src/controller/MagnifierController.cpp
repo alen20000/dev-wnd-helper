@@ -28,8 +28,12 @@ bool MagnifierController::stopMagnifier() {
 }
 
 void MagnifierController::onUpdateCursorPos() {
-	POINT cursorPos;
-	if (m_cursorHandle.getCursorPos(cursorPos)) {
-		std::cout << "鼠標座標: (" << cursorPos.x << ", " << cursorPos.y << ")" << std::endl;
-	}
+		POINT cursorPos;
+		if (m_cursorHandle.getCursorPos(cursorPos)) {
+			std::cout << "鼠標座標: (" << cursorPos.x << ", " << cursorPos.y << ")" << std::endl;
+		}
+}
+
+bool MagnifierController::getCursorPos(POINT& point) const {
+	return m_cursorHandle.getCursorPos(point);
 }
