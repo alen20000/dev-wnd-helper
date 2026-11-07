@@ -1,6 +1,6 @@
 #include "ui/ScreenToolTabWidget.hpp"
 
-#include <QVBoxLayout>
+
 #include <QPushButton>
 #include <windows.h>
 
@@ -31,9 +31,20 @@ ScreenToolTab::ScreenToolTab(QWidget* parent)
 
 
 #pragma region 排版
-    QVBoxLayout* m_layout = new QVBoxLayout(this);
-    m_layout->addWidget(m_maginifer);
-    m_layout->addWidget(m_magnifierDisplay, 0, Qt::AlignCenter);;// 0:不搶占空間；Qt::AlignCenter:置中對齊
+    // 一個垂直容器
+    QVBoxLayout* m_verti_layout = new QVBoxLayout(this);
+    m_verti_layout->addWidget(m_maginifer);
+
+    //一個水平排版，左側放座標，右側是視窗容器
+    QHBoxLayout* m_hori_Layout = new QHBoxLayout();
+
+    m_cursorLabel = new QLabel("座標: ", this);
+    m_cursorLabel ->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+
+	m_hori_Layout->addWidget(m_cursorLabel, 1);
+	m_hori_Layout->addWidget(m_magnifierDisplay, 0, Qt::AlignCenter);// 0:不搶占空間；Qt::AlignCenter:置中對齊
+
+	m_verti_layout->addLayout(m_hori_Layout); // 放進垂直容器
 #pragma endregion
 
     //Bind Event

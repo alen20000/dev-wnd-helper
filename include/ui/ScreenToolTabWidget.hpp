@@ -3,6 +3,8 @@
 #include <QWidget>
 #include <QPushButton>
 #include <QVBoxLayout>
+#include <QHBoxLayout>
+#include <QLabel>
 #include <QTimer>
 
 class ScreenToolTab : public QWidget {
@@ -18,8 +20,6 @@ private slots:
 
 private:
 
-	//Layout
-	QVBoxLayout* m_layout;
 
 	//Btn
 	QPushButton* m_maginifer;
@@ -36,7 +36,8 @@ private:
 	// Magnifier 更新計時器
 	QTimer* m_updateTimer;
 
-
+	//Label
+	QLabel* m_cursorLabel;
 
 	//初始化
 	MagnifierController m_controller;
