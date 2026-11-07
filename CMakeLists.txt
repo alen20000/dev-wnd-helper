@@ -26,6 +26,9 @@ set (logic_sources
     "src/logic/WndHandle.cpp"
     "src/logic/MagnifierHandle.cpp"
     "include/logic/MagnifierHandle.hpp"
+    "src/logic/CursorHandle.cpp"
+    "include/logic/CursorHandle.hpp"
+
 )
 set(controller_sources
     "src/controller/AppController.cpp"

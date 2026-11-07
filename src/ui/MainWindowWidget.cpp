@@ -1,5 +1,5 @@
 #include "ui/MainWindowWidget.hpp"
-#include "ui/ScreenToolTab.hpp"
+#include "ui/ScreenToolTabWidget.hpp"
 //#include "controller/AppController.hpp"
 #include "DataTypes.hpp"
 
@@ -21,7 +21,7 @@ MainWindow::MainWindow(QWidget* parent)
 	//視窗大小預設
 	setWindowTitle("Tool Box");
 	resize(680, 300);
-	
+
 	//	頂部工具列
 	QToolBar* toolBar = addToolBar("Top Toolbar");
 	toolBar->setMovable(false);  //設定固定列
@@ -73,7 +73,7 @@ MainWindow::MainWindow(QWidget* parent)
 	leftLayout->addWidget(m_btnCheckWindowByTitle);
 	connect(m_btnCheckWindowByTitle, &QPushButton::clicked, this, &MainWindow::checkWindowByTitle);
 
-	leftLayout->addStretch(); 
+	leftLayout->addStretch();
 
 	// 右側垂直版(欄位)
 	QVBoxLayout* rightLayout = new QVBoxLayout();
@@ -81,7 +81,7 @@ MainWindow::MainWindow(QWidget* parent)
 	targetInputText = new QLineEdit(); //輸入欄位
 	rightLayout->addWidget(targetInputText);
 	targetInputText->setPlaceholderText("輸入視窗關鍵字...");
-	
+
 
 	outputText = new QPlainTextEdit(); //輸出欄位
 	rightLayout->addWidget(outputText);
@@ -106,7 +106,7 @@ void MainWindow::toggleCheckForegroundWindow() {
 	if (m_isMonitoring) {
 		//開啟檢測
 		m_btnGetForegroundInfo->setText("停止檢測"); //更改按鈕文字
-		m_timer->start(100); 
+		m_timer->start(100);
 		outputText->appendPlainText("--- 開始檢測頂層視窗 ---");
 
 	}
